@@ -128,6 +128,96 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   });
 })();
 
+/* ---------- FAQ accordion ---------- */
+(function accordion(){
+  const items = document.querySelectorAll('.accordion-item');
+  if (!items.length) return;
+  items.forEach(item => {
+    const trigger = item.querySelector('.accordion-trigger');
+    const panel = item.querySelector('.accordion-panel');
+    trigger.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      items.forEach(other => {
+        other.classList.remove('open');
+        other.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+        other.querySelector('.accordion-panel').style.maxHeight = null;
+      });
+      if (!isOpen){
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+
+/* ---------- Origin section: connecting dot-grid canvas ---------- */
+(function originCanvas(){
+  const canvas = document.getElementById('originCanvas');
+  if (!canvas) return;
+  if (reduceMotion){ canvas.remove(); return; }
+  const ctx = canvas.getContext('2d');
+  const section = canvas.closest('.origin');
+  let w, h, dots = [];
+  let mouse = { x: -9999, y: -9999 };
+
+  function resize(){
+    w = canvas.width = section.offsetWidth * devicePixelRatio;
+    h = canvas.height = section.offsetHeight * devicePixelRatio;
+    canvas.style.width = section.offsetWidth + 'px';
+    canvas.style.height = section.offsetHeight + 'px';
+    const gap = 52 * devicePixelRatio;
+    dots = [];
+    for (let y = gap / 2; y < h; y += gap){
+      for (let x = gap / 2; x < w; x += gap){
+        dots.push({ x, y, ox: x, oy: y });
+      }
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    const styles = getComputedStyle(document.documentElement);
+    const accent = styles.getPropertyValue('--accent').trim() || '#BE6A2C';
+    const radius = 140 * devicePixelRatio;
+
+    dots.forEach(d => {
+      const dx = mouse.x - d.ox, dy = mouse.y - d.oy;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      let r = 1.4 * devicePixelRatio;
+      let alpha = 0.22;
+      if (dist < radius){
+        const f = 1 - dist / radius;
+        r += f * 2.2 * devicePixelRatio;
+        alpha += f * 0.55;
+        d.x = d.ox - dx * f * 0.12;
+        d.y = d.oy - dy * f * 0.12;
+      } else {
+        d.x += (d.ox - d.x) * 0.08;
+        d.y += (d.oy - d.y) * 0.08;
+      }
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = accent;
+      ctx.globalAlpha = alpha;
+      ctx.fill();
+    });
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  section.addEventListener('mousemove', (e) => {
+    const r = section.getBoundingClientRect();
+    mouse.x = (e.clientX - r.left) * devicePixelRatio;
+    mouse.y = (e.clientY - r.top) * devicePixelRatio;
+  });
+  section.addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
+
+  window.addEventListener('resize', resize);
+  resize();
+  requestAnimationFrame(draw);
+})();
+
 /* ---------- Custom cursor ---------- */
 (function customCursor(){
   if (reduceMotion || matchMedia('(pointer:coarse)').matches) return;
