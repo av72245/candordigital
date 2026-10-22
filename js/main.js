@@ -244,3 +244,112 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
   });
 })();
+
+/* ---------- Hero "decode" effect: headline resolves out of noise on load ---------- */
+(function heroDecode(){
+  const title = document.getElementById('heroTitle');
+  const input = document.getElementById('brandInput');
+  if (!title) return;
+  if (reduceMotion) return; // words are already correct in markup — nothing to do
+
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#%&*+=~?/\\';
+  const words = Array.from(title.querySelectorAll('.word'));
+  const delays = [50, 120, 190, 260, 330]; // mirrors the existing .word animation-delay stagger
+  const duration = 620;
+
+  function scramble(el, finalText, delay, isInput){
+    const len = finalText.length;
+    let start = null;
+    function frame(now){
+      if (isInput && document.activeElement === el) return; // user took over — hands off
+      if (start === null) start = now + delay;
+      if (now < start){ requestAnimationFrame(frame); return; }
+      const p = Math.min((now - start) / duration, 1);
+      const revealCount = Math.floor(p * len);
+      let out = '';
+      for (let i = 0; i < len; i++){
+        const ch = finalText[i];
+        if (ch === ' ' || ch === ' '){ out += ch; continue; }
+        out += (i < revealCount) ? ch : chars[Math.floor(Math.random() * chars.length)];
+      }
+      if (isInput){ el.value = out; } else { el.textContent = out; }
+      if (p < 1){ requestAnimationFrame(frame); }
+      else if (isInput){ el.value = finalText; el.dispatchEvent(new Event('input', { bubbles: true })); }
+      else { el.textContent = finalText; }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  words.forEach((w, i) => {
+    const finalText = w.textContent;
+    scramble(w, finalText, delays[i] !== undefined ? delays[i] : 330, false);
+  });
+  if (input){
+    scramble(input, input.value || 'you', delays[3], true);
+  }
+})();
+
+/* ---------- Type-your-brand hero: personalizes the headline live ---------- */
+(function brandInput(){
+  const input = document.getElementById('brandInput');
+  const subBrand = document.getElementById('heroSubBrand');
+  if (!input) return;
+
+  // Hidden mirror used to size the input to its content, so it reads like text, not a form field.
+  const mirror = document.createElement('span');
+  mirror.style.position = 'absolute';
+  mirror.style.left = '-9999px';
+  mirror.style.top = '0';
+  mirror.style.whiteSpace = 'pre';
+  mirror.style.visibility = 'hidden';
+  document.body.appendChild(mirror);
+
+  function sizeToContent(){
+    const cs = getComputedStyle(input);
+    mirror.style.font = cs.font;
+    mirror.style.letterSpacing = cs.letterSpacing;
+    mirror.textContent = input.value.length ? input.value : (input.placeholder || 'you');
+    const w = mirror.offsetWidth + 10;
+    input.style.width = Math.max(w, 28) + 'px';
+  }
+
+  function updateSub(){
+    if (!subBrand) return;
+    const v = input.value.trim();
+    if (!v || v.toLowerCase() === 'you'){
+      subBrand.textContent = 'small, ambitious brands';
+    } else {
+      subBrand.textContent = 'brands like ' + v;
+    }
+  }
+
+  input.addEventListener('input', () => { sizeToContent(); updateSub(); });
+  input.addEventListener('blur', () => {
+    if (!input.value.trim()) input.value = 'you';
+    sizeToContent(); updateSub();
+  });
+  window.addEventListener('resize', sizeToContent);
+  // Initial box sizing right away; the decode effect (if running) dispatches its own
+  // 'input' event once it settles, which re-runs this with the correct final text.
+  sizeToContent(); updateSub();
+})();
+
+/* ---------- Footer signature + logo easter egg ---------- */
+(function logoEasterEgg(){
+  const marks = document.querySelectorAll('.brand-mark');
+  if (!marks.length) return;
+  function pop(svg){
+    if (reduceMotion) return;
+    svg.classList.remove('spin-pop');
+    void svg.getBoundingClientRect(); // restart the animation
+    svg.classList.add('spin-pop');
+  }
+  marks.forEach(svg => {
+    svg.addEventListener('click', () => pop(svg));
+    if (svg.getAttribute('tabindex') !== null){
+      svg.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pop(svg); }
+      });
+    }
+  });
+})();
