@@ -161,6 +161,72 @@ h2{font-size:clamp(1.7rem,3.2vw,2.3rem);}
 .card h3{font-size:1.1rem; margin-bottom:8px;}
 .card p{font-size:.93rem; color:var(--text-muted); margin:0;}
 
+/* ============ Work ============ */
+.work-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+@media (max-width:860px){ .work-grid{grid-template-columns:1fr;} }
+.work-card{
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+  overflow:hidden; box-shadow:var(--shadow); transform-style:preserve-3d; will-change:transform;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease;
+}
+.work-card:hover{border-color:var(--accent);}
+.work-browser{background:var(--surface-alt);}
+.work-browser-bar{
+  display:flex; align-items:center; gap:7px; padding:12px 14px; border-bottom:1px solid var(--border);
+}
+.work-dot{width:8px; height:8px; border-radius:50%; background:var(--border);}
+.work-url{
+  margin-left:10px; font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--text-muted);
+  background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:3px 12px;
+}
+.work-browser-body{
+  position:relative; padding:26px 22px; min-height:190px; display:flex; flex-direction:column; justify-content:center; gap:14px;
+}
+
+/* creator mockup */
+.work-mock-creator{align-items:flex-start;}
+.wm-avatar{width:40px; height:40px; border-radius:50%; background:var(--accent); flex-shrink:0;}
+.wm-lines{display:flex; flex-direction:column; gap:7px; width:100%;}
+.wm-line{display:block; height:9px; border-radius:5px; background:var(--border);}
+.wm-line-lg{width:62%;}
+.wm-line-sm{width:38%; background:var(--accent-soft);}
+.wm-reels{display:flex; gap:8px; width:100%;}
+.wm-reel{flex:1; aspect-ratio:3/4; border-radius:8px; background:linear-gradient(160deg, var(--accent-soft), var(--surface));}
+.wm-reel:nth-child(2){background:linear-gradient(160deg, var(--accent), var(--accent-ink));}
+.wm-pills{display:flex; gap:6px; flex-wrap:wrap;}
+.wm-pills span{
+  font-family:'JetBrains Mono',monospace; font-size:.62rem; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--accent-ink); background:var(--accent-soft); border-radius:12px; padding:3px 9px;
+}
+
+/* finance mockup */
+.wm-slider{position:relative; height:6px; border-radius:4px; background:var(--border); width:100%;}
+.wm-slider-fill{position:absolute; left:0; top:0; bottom:0; width:64%; border-radius:4px; background:var(--good);}
+.wm-slider-handle{position:absolute; left:64%; top:50%; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:var(--surface); border:3px solid var(--good);}
+.wm-chips{display:flex; gap:6px; flex-wrap:wrap;}
+.wm-chips span{
+  font-family:'JetBrains Mono',monospace; font-size:.62rem; color:var(--text); background:var(--surface);
+  border:1px solid var(--border); border-radius:12px; padding:3px 9px;
+}
+.wm-tools{display:flex; gap:8px; width:100%;}
+.wm-tool{flex:1; height:30px; border-radius:7px; background:var(--surface); border:1px solid var(--border);}
+.wm-tool:nth-child(1){border-color:var(--accent);}
+
+.work-meta{padding:24px 24px 28px;}
+.work-meta h3{font-size:1.15rem; margin-bottom:8px;}
+.work-meta p{font-size:.93rem; margin-bottom:16px;}
+.work-tags{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px;}
+.work-tags span{
+  font-size:.72rem; color:var(--text-muted); background:var(--surface-alt); border:1px solid var(--border);
+  border-radius:20px; padding:4px 11px;
+}
+.work-link{
+  display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:.92rem; color:var(--accent-ink);
+  text-decoration:none;
+}
+.work-link svg{width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; transition:transform .25s ease;}
+.work-link:hover svg{transform:translate(2px,-2px);}
+
 /* ============ Origin ============ */
 .origin{position:relative; overflow:hidden; background:var(--surface-alt); border-top:1px solid var(--border); border-bottom:1px solid var(--border);}
 .origin-canvas{position:absolute; inset:0; width:100%; height:100%; opacity:.5;}
