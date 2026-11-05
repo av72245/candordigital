@@ -178,7 +178,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   function draw(){
     ctx.clearRect(0, 0, w, h);
     const styles = getComputedStyle(document.documentElement);
-    const accent = styles.getPropertyValue('--accent').trim() || '#BE6A2C';
+    const accent = styles.getPropertyValue('--accent').trim() || '#3346E0';
     const radius = 140 * devicePixelRatio;
 
     dots.forEach(d => {
