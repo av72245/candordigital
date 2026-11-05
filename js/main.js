@@ -402,3 +402,79 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     });
   });
 })();
+
+/* ---------- Brand-name hero: teach the trick, then personalise CTA + form ---------- */
+(function brandDemo(){
+  const input = document.getElementById('brandInput');
+  const hint = document.getElementById('brandHint');
+  const cta = document.getElementById('heroCtaText');
+  const formBiz = document.querySelector('#auditForm input[name="business"]');
+  if (!input) return;
+
+  const samples = ['your café', 'Bloom & Co.', 'Kai’s Plumbing'];
+  const ctaDefault = cta ? cta.textContent : '';
+  let userTookOver = false, timers = [], tracked = false, autoFilledBiz = false;
+
+  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+  const setVal = v => { input.value = v; input.dispatchEvent(new Event('input', { bubbles: true })); };
+
+  function stopDemo(){
+    timers.forEach(clearTimeout); timers = [];
+    input.classList.remove('is-demo');
+  }
+
+  // Type a word, hold, delete back to "you". Runs through the samples once.
+  function runDemo(){
+    if (userTookOver) return;
+    input.classList.add('is-demo');
+    let t = 0;
+    samples.forEach(word => {
+      // delete current text
+      later(() => setVal(''), t += 300);
+      for (let i = 1; i <= word.length; i++){ later(() => setVal(word.slice(0, i)), t += 85); }
+      t += 1300; // hold so it can be read
+      for (let i = word.length - 1; i >= 0; i--){ later(() => setVal(word.slice(0, i)), t += 40); }
+    });
+    later(() => setVal('you'), t += 250);
+    later(() => { input.classList.remove('is-demo'); input.classList.add('is-nudge'); }, t += 200);
+    later(() => input.classList.remove('is-nudge'), t + 1000);
+  }
+
+  function personalise(){
+    if (input.classList.contains('is-demo')) return; // demo text never leaks into the CTA or form
+    const v = input.value.trim();
+    const real = v && v.toLowerCase() !== 'you';
+    if (cta) cta.textContent = real ? `Book a free audit for ${v}` : ctaDefault;
+    if (formBiz && (!formBiz.value || autoFilledBiz)){
+      formBiz.value = real ? v : '';
+      autoFilledBiz = real;
+    }
+    if (real && !tracked && window.candorTrack){ tracked = true; window.candorTrack('brand_typed'); }
+    if (hint) hint.classList.toggle('is-done', real);
+  }
+
+  input.addEventListener('focus', () => {
+    if (input.classList.contains('is-demo')) setVal('you');
+    userTookOver = true; stopDemo();
+    // typing replaces "you" (deferred so the click doesn't drop the selection)
+    if (input.value.trim().toLowerCase() === 'you') requestAnimationFrame(() => input.select());
+  });
+  input.addEventListener('mouseup', e => e.preventDefault()); // keep the selection on click
+  // Belt and braces: any direct interaction ends the demo, even if focus fires late.
+  ['pointerdown', 'keydown', 'touchstart'].forEach(ev => input.addEventListener(ev, () => {
+    if (userTookOver) return;
+    const wasDemo = input.classList.contains('is-demo');
+    userTookOver = true; stopDemo();
+    if (wasDemo || !input.value.trim()) setVal('you');
+    if (input.value.trim().toLowerCase() === 'you') input.select();
+  }, { passive: true }));
+  input.addEventListener('input', personalise);
+  input.addEventListener('blur', personalise);
+  if (formBiz) formBiz.addEventListener('input', () => { autoFilledBiz = false; });
+  if (hint) hint.addEventListener('click', () => input.focus());
+
+  // Start once the hero has settled and is on screen; skip for reduced motion.
+  if (!reduceMotion){
+    later(() => { if (window.scrollY < 200 && document.activeElement !== input) runDemo(); }, 2200);
+  }
+})();

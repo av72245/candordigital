@@ -476,3 +476,29 @@ h1,h2,h3{font-variation-settings:"SOFT" 50, "WONK" 0; letter-spacing:-.015em;}
 body{font-feature-settings:"ss01","cv01"; letter-spacing:-.005em;}
 .principle{background-image:radial-gradient(220px circle at var(--mx,-200px) var(--my,-200px), color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%);}
 button, input, select, textarea{font-family:inherit;}
+
+/* ============ Brand-name hero: discoverability ============ */
+.hero-hint{
+  display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding:7px 14px 7px 11px;
+  font:inherit; font-size:.86rem; font-weight:500; color:var(--text-muted); cursor:pointer;
+  background:color-mix(in srgb, var(--accent) 8%, transparent);
+  border:1px dashed color-mix(in srgb, var(--accent) 55%, transparent); border-radius:999px;
+  transition:color .3s ease, border-color .3s ease, box-shadow .3s ease, opacity .5s ease, transform .5s ease;
+}
+.hero-hint svg{width:15px; height:15px; color:var(--accent); animation:penWiggle 2.4s ease-in-out infinite;}
+.hero-hint b{color:var(--accent-ink); font-weight:700;}
+.hero-hint:hover{color:var(--text); border-style:solid; box-shadow:0 0 22px -6px var(--glow);}
+.hero-hint.is-done{opacity:0; transform:translateY(-4px); pointer-events:none;}
+@keyframes penWiggle{ 0%,70%,100%{transform:rotate(0);} 78%{transform:rotate(-14deg);} 86%{transform:rotate(10deg);} 94%{transform:rotate(-6deg);} }
+
+.hero-input{border-radius:6px 6px 0 0; transition:border-color .25s ease, background .25s ease, box-shadow .25s ease;}
+.hero-input:hover{background:color-mix(in srgb, var(--accent) 7%, transparent);}
+.hero-input:focus{background:color-mix(in srgb, var(--accent) 10%, transparent); box-shadow:0 6px 18px -10px var(--glow);}
+.hero-input.is-demo{border-bottom-style:solid; caret-color:transparent;
+  background-image:linear-gradient(var(--accent),var(--accent)); background-size:3px .9em; background-repeat:no-repeat;
+  background-position:right 4px center; animation:demoCaret 1s steps(1) infinite;}
+@keyframes demoCaret{ 50%{background-size:0 .9em;} }
+.hero-input.is-nudge{animation:nudge .9s cubic-bezier(.36,.07,.19,.97) 1;}
+@keyframes nudge{ 0%,100%{transform:none;} 20%{transform:translateY(-6px);} 40%{transform:translateY(0);} 60%{transform:translateY(-3px);} }
+/* demo/nudge animations replace .word's entrance animation, so pin its end state */
+.hero-input.is-demo, .hero-input.is-nudge{opacity:1; transform:none;}

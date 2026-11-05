@@ -25,10 +25,20 @@
    "image": "https://candordigital.com.au/assets/og-mark.png",
    "email": "akash@candordigital.com.au",
    "description": "Melbourne-based digital marketing practice for small, ambitious brands: social and content, paid social ads, email and retention, analytics and reporting.",
-   "areaServed": {
-    "@type": "City",
-    "name": "Melbourne"
-   },
+   "areaServed": [
+    {
+     "@type": "City",
+     "name": "Melbourne"
+    },
+    {
+     "@type": "State",
+     "name": "Victoria"
+    },
+    {
+     "@type": "Country",
+     "name": "Australia"
+    }
+   ],
    "address": {
     "@type": "PostalAddress",
     "addressLocality": "Melbourne",
@@ -209,10 +219,10 @@
           <span class="line"><span class="word">Marketing</span> <span class="word">that</span> <span class="word">tells</span></span>
           <span class="line"><input type="text" id="brandInput" class="hero-input word" value="you" placeholder="you" maxlength="24" autocomplete="off" autocapitalize="words" spellcheck="false" aria-label="Type your brand's name to personalize this headline" data-hover> <span class="word word-em">the&nbsp;truth.</span></span>
         </h1>
-        <p class="hero-hint reveal" data-reveal style="transition-delay:.38s"><span class="hero-hint-arrow">&uarr;</span> psst — try typing your brand's name up there</p>
+        <button type="button" class="hero-hint reveal" id="brandHint" data-reveal style="transition-delay:.38s"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><span>Tap <b>&ldquo;you&rdquo;</b> and type your business name</span></button>
         <p class="hero-sub reveal" data-reveal style="transition-delay:.15s">Candor Digital helps <span id="heroSubBrand">small, ambitious brands</span> grow online — with plain answers, honest reporting, and results you can check yourself, not numbers dressed up to look good.</p>
         <div class="hero-ctas reveal" data-reveal style="transition-delay:.25s">
-          <a class="btn btn-primary magnetic" href="#contact" data-hover data-track="hero_cta"><span>Book a free 30-min audit</span></a>
+          <a class="btn btn-primary magnetic" href="#contact" data-hover data-track="hero_cta"><span id="heroCtaText">Book a free 30-min audit</span></a>
           <a class="btn btn-secondary magnetic" href="#services" data-hover><span>See what we do</span></a>
         </div>
       </div>
@@ -629,7 +639,7 @@
         <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" width="18" height="18" role="button" tabindex="0" aria-label="Replay the Candor Digital logo animation" data-hover><path class="mark-draw" d="M 81.69,54.45 A 32,32 0 1 1 81.69,45.55" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/><line class="mark-draw" x1="62" y1="50" x2="95" y2="50" stroke="currentColor" stroke-width="10" stroke-linecap="round"/></svg>
         Candor Digital
       </div>
-      <div class="muted">Melbourne, Australia &middot; akash@candordigital.com.au</div>
+      <div class="muted">Melbourne, Victoria &middot; working with businesses across Australia &middot; <a href="mailto:akash@candordigital.com.au">akash@candordigital.com.au</a></div>
     </div>
     <div class="footer-sig-wrap reveal" data-reveal aria-hidden="true">
       <svg class="footer-sig" viewBox="0 0 220 14">
