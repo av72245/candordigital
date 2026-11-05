@@ -1,0 +1,62 @@
+---
+layout: base.njk
+bodyClass: page-inner page-case
+---
+{% include "page-hero.njk" %}
+
+<section>
+  <div class="wrap two-col two-col--wide">
+    <div class="reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">the brief</span></div>
+      <h2>{{ briefHeading }}</h2>
+      {% for p in brief %}<p>{{ p }}</p>{% endfor %}
+    </div>
+    <aside class="case-card reveal" data-reveal style="transition-delay:.08s">
+      <h3>At a glance</h3>
+      <dl>{% for f in glance %}<dt>{{ f.k }}</dt><dd>{{ f.v | safe }}</dd>{% endfor %}</dl>
+      <a class="work-link work-link--primary" href="{{ liveUrl }}" target="_blank" rel="noopener" data-hover><span>Visit {{ liveLabel }}</span><svg viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="8 7 17 7 17 16"/></svg></a>
+    </aside>
+  </div>
+</section>
+
+<section class="alt-band">
+  <div class="wrap">
+    <div class="section-head reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">what we built</span></div>
+      <h2>{{ builtHeading }}</h2>
+    </div>
+    <div class="included-grid">
+      {% for b in built %}
+      <article class="principle reveal" data-reveal><h3>{{ b.t }}</h3><p>{{ b.d }}</p></article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two-col">
+    <div class="reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">decisions that mattered</span></div>
+      <h2>Why it's built this way</h2>
+      <ul class="check-list">{% for d in decisions %}<li>{{ d }}</li>{% endfor %}</ul>
+    </div>
+    <div class="reveal" data-reveal style="transition-delay:.08s">
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">the honest status</span></div>
+      <h2>Where it stands now</h2>
+      {% for p in status %}<p class="muted">{{ p }}</p>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="related">
+  <div class="wrap">
+    <div class="section-head"><h2>Services used</h2></div>
+    <div class="cards cards--3">
+      {% for s in collections.service %}{% if s.data.service in servicesUsed %}
+      <article class="card"><h3>{{ s.data.service }}</h3><p>{{ s.data.short }}</p><a class="card-more" href="{{ s.url }}" data-hover>Learn more <span aria-hidden="true">&rarr;</span></a></article>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "cta-band.njk" %}

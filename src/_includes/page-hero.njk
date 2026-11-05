@@ -1,0 +1,25 @@
+<header class="page-hero">
+  <div class="wrap">
+    {% if breadcrumbs %}
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a>{% for c in breadcrumbs %}<span aria-hidden="true">/</span>{% if loop.last %}<span aria-current="page">{{ c.name }}</span>{% else %}<a href="{{ c.url }}">{{ c.name }}</a>{% endif %}{% endfor %}
+    </nav>
+    {% endif %}
+    <div class="page-hero-grid">
+      <div>
+        <div class="section-tag is-visible"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">{{ tag }}</span></div>
+        <h1>{{ heading | safe }}</h1>
+        <p class="page-lede">{{ lede | safe }}</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary magnetic" href="/contact/" data-hover data-track="page_cta"><span>Book a free 30-min audit</span></a>
+          {% if secondaryCta %}<a class="btn btn-secondary magnetic" href="{{ secondaryCta.url }}" data-hover><span>{{ secondaryCta.label }}</span></a>{% endif %}
+        </div>
+      </div>
+      {% if facts %}
+      <ul class="page-facts">
+        {% for f in facts %}<li><b>{{ f.k }}</b><span>{{ f.v }}</span></li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</header>

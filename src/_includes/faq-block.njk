@@ -1,0 +1,21 @@
+{% if faqs %}
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">asked &amp; answered</span></div>
+      <h2>{{ faqHeading or "Questions people ask" }}</h2>
+    </div>
+    <div class="accordion">
+      {% for f in faqs %}
+      <div class="accordion-item reveal" data-reveal>
+        <button class="accordion-trigger" data-hover aria-expanded="false">
+          <span>{{ f.q }}</span>
+          <svg viewBox="0 0 24 24" class="accordion-icon"><line x1="5" y1="12" x2="19" y2="12"/><line x1="12" y1="5" x2="12" y2="19"/></svg>
+        </button>
+        <div class="accordion-panel"><p>{{ f.a }}</p></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

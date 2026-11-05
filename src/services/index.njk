@@ -1,0 +1,32 @@
+---
+layout: base.njk
+bodyClass: page-inner
+eleventyExcludeFromCollections: true
+title: "Digital Marketing Services Melbourne | Candor Digital"
+description: "Social media management, Meta ads, email marketing and websites for Melbourne small businesses. Plain-English reporting, month-to-month, free 30-minute audit."
+tag: "what we actually do"
+heading: "Four services, done <em>properly</em>."
+lede: "We keep the list short on purpose. Each service below comes with plain-English reporting, month-to-month terms and a free audit first, so you only pay for what makes sense for your business."
+secondaryCta: { label: "See pricing", url: "/#pricing" }
+faqs:
+  - { q: "Can I start with just one service?", a: "Yes, and most clients do. The four-week trial covers one channel, clearly defined, so you can judge how we work before adding anything." }
+  - { q: "Which service should I start with?", a: "That's what the free audit is for. We'll look at where your customers come from today and tell you which channel is most likely to pay off first." }
+  - { q: "Do all services include reporting?", a: "Yes. Every service comes with a one-page monthly report in plain English plus a short recorded walkthrough." }
+---
+{% include "page-hero.njk" %}
+<section>
+  <div class="wrap">
+    <div class="cards services-hub">
+      {% for s in collections.service %}
+      <article class="card reveal" data-reveal>
+        <h3>{{ s.data.service }}</h3>
+        <p>{{ s.data.short }}</p>
+        <ul class="mini-list">{% for i in s.data.included | batch(3) | first %}<li>{{ i.t }}</li>{% endfor %}</ul>
+        <a class="card-more" href="{{ s.url }}" data-hover>Learn more <span aria-hidden="true">&rarr;</span></a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include "faq-block.njk" %}
+{% include "cta-band.njk" %}

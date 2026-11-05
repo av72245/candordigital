@@ -354,12 +354,13 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   });
 })();
 
-/* ---------- Tubelight nav: glowing pill follows hover + active section ---------- */
+/* ---------- Tubelight nav: glowing pill follows hover + current page/section ---------- */
 (function tubelightNav(){
   const pill = document.getElementById('navPill');
   const light = document.getElementById('tubelight');
   if (!pill || !light) return;
-  const links = [...pill.querySelectorAll('a[href^="#"]')];
+  const links = [...pill.querySelectorAll('a')];
+  const onHome = location.pathname === '/' || location.pathname === '/index.html';
   let active = null;
 
   function moveTo(link){
@@ -370,26 +371,38 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     light.style.transform = `translateX(${r.left - p.left}px)`;
     light.classList.add('on');
   }
+  function setActive(link){
+    links.forEach(l => l.classList.toggle('is-active', l === link));
+    active = link;
+    if (!pill.matches(':hover')) moveTo(active);
+  }
 
   links.forEach(link => {
     link.addEventListener('mouseenter', () => moveTo(link));
     link.addEventListener('focus', () => moveTo(link));
   });
   pill.addEventListener('mouseleave', () => moveTo(active));
-
-  // Light rests on whichever section is on screen
-  const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const link = links.find(l => l.getAttribute('href') === '#' + e.target.id);
-      links.forEach(l => l.classList.toggle('is-active', l === link));
-      active = link;
-      if (!pill.matches(':hover')) moveTo(active);
-    });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  sections.forEach(s => io.observe(s));
   window.addEventListener('resize', () => moveTo(active));
+
+  if (!onHome){
+    // Inner pages: light rests on the link whose path this page lives under
+    const match = links.find(l => {
+      const path = new URL(l.href).pathname;
+      return path !== '/' && location.pathname.startsWith(path);
+    });
+    requestAnimationFrame(() => setActive(match || null));
+    return;
+  }
+
+  // Home: light follows whichever section is on screen
+  const byId = new Map();
+  links.forEach(l => { const h = new URL(l.href).hash; if (h) byId.set(h.slice(1), l); });
+  const servicesLink = links.find(l => new URL(l.href).pathname === '/services/');
+  if (servicesLink) byId.set('services', servicesLink);
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) setActive(byId.get(e.target.id) || null); });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  byId.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
 })();
 
 /* ---------- Cursor spotlight on principle cards ---------- */
@@ -477,4 +490,15 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   if (!reduceMotion){
     later(() => { if (window.scrollY < 200 && document.activeElement !== input) runDemo(); }, 2200);
   }
+})();
+
+/* ---------- Mobile menu ---------- */
+(function mobileMenu(){
+  const btn = document.getElementById('menuToggle');
+  const bar = document.querySelector('.topbar');
+  if (!btn || !bar) return;
+  const set = open => { bar.classList.toggle('menu-open', open); btn.setAttribute('aria-expanded', String(open)); btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); };
+  btn.addEventListener('click', () => set(!bar.classList.contains('menu-open')));
+  bar.querySelectorAll('.navlinks a').forEach(a => a.addEventListener('click', () => set(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') set(false); });
 })();

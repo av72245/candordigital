@@ -1,0 +1,75 @@
+---
+layout: base.njk
+bodyClass: page-inner page-about
+permalink: /about/
+title: "About Candor Digital | Honest Digital Marketing in Melbourne"
+description: "Candor Digital is a small Melbourne digital marketing practice run by Akash Verma. No ad markup, you own every account, plain-English reports and a short client list."
+tag: "who's behind it"
+heading: "A small practice built on <em>straight answers</em>."
+lede: "Candor Digital is a Melbourne digital marketing practice for small, owner-led businesses. It's small on purpose, so the person who runs your audit is the person doing the work."
+secondaryCta: { label: "See our work", url: "/#work" }
+breadcrumbs: [{ name: "About", url: "/about/" }]
+facts:
+  - { k: "Based in", v: "Melbourne, Victoria" }
+  - { k: "Works with", v: "Small businesses across Australia" }
+  - { k: "Clients at a time", v: "A deliberately short list" }
+  - { k: "Contract", v: "Month-to-month" }
+faqs:
+  - { q: "Isn't a brand-new agency a risk?", a: "Being new is a fair thing to weigh. That's why every engagement starts with a four-week trial scope, so you can judge real numbers before committing to anything longer." }
+  - { q: "Who will I actually work with?", a: "Akash, directly. There's no account manager in between and no handing your business to a junior after the sales call." }
+  - { q: "Why do you cap the number of clients?", a: "Because attention is the product. A short client list means faster replies, closer work and reports that reflect your business, not a template." }
+---
+{% include "page-hero.njk" %}
+
+<section>
+  <div class="wrap two-col two-col--wide">
+    <div class="story-copy reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">the candid backstory</span></div>
+      <h2>Why Candor exists</h2>
+      <p>Candor Digital didn't start with a pitch deck. It started with a simple rule: never claim a result we can't actually show someone. Every idea gets tested on a real brand first, the numbers get watched closely, and only what genuinely moves them becomes part of how we work.</p>
+      <p>Too many small businesses have paid an agency and received a glossy monthly PDF that never answers the only question that matters: did this bring in customers? Candor exists to be the opposite of that: smaller, clearer, and honest when something isn't worth your money.</p>
+      <p class="origin-line">The candid version of our pitch: <span>we're new, we're small on purpose, and every result on this site will be one we can show you.</span></p>
+    </div>
+    <aside class="case-card founder-card reveal" data-reveal style="transition-delay:.08s">
+      <div class="founder-mark" aria-hidden="true">AV</div>
+      <h3>Akash Verma</h3>
+      <p class="muted">Founder, Candor Digital</p>
+      <p>Melbourne-based, with a background in data science and analytics. Akash builds the websites, runs the campaigns and writes the reports himself, and likes nothing more than turning messy numbers into a clear next step.</p>
+      <a class="work-link work-link--primary" href="mailto:{{ site.email }}" data-hover><span>{{ site.email }}</span></a>
+    </aside>
+  </div>
+</section>
+
+<section class="alt-band">
+  <div class="wrap">
+    <div class="section-head reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">what we promise</span></div>
+      <h2>Four rules we don't bend</h2>
+    </div>
+    <div class="principles">
+      <article class="principle reveal" data-reveal><h3>Ad spend is never marked up</h3><p>Your Meta or Google budget is billed straight to your card. Our fee is our fee, and it's the only thing we invoice.</p></article>
+      <article class="principle reveal" data-reveal><h3>You own every account</h3><p>Ad accounts, pixels, analytics and content stay in your name from day one. If you leave, nothing leaves with us.</p></article>
+      <article class="principle reveal" data-reveal><h3>Reports a busy owner can read</h3><p>One page in plain English plus a five-minute video: what we changed, what it cost, what happened, what's next.</p></article>
+      <article class="principle reveal" data-reveal><h3>A short list of clients</h3><p>We cap how many businesses we take on, so you get real attention instead of a ticket number.</p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">how it really starts</span></div>
+      <h2>Four steps, not a funnel</h2>
+    </div>
+    <div class="timeline" id="timeline">
+      <div class="timeline-line"><span class="timeline-fill" id="timelineFill"></span></div>
+      <div class="timeline-item reveal" data-reveal><div class="timeline-dot">1</div><div><h3>A free 30-minute audit</h3><p class="muted">We look at your socials, site and recent numbers, and tell you honestly whether spending more is worth it.</p></div></div>
+      <div class="timeline-item reveal" data-reveal><div class="timeline-dot">2</div><div><h3>A 4-week trial scope</h3><p class="muted">One channel, clearly defined, so you see how we work and what it costs before anything longer.</p></div></div>
+      <div class="timeline-item reveal" data-reveal><div class="timeline-dot">3</div><div><h3>A plain-language report</h3><p class="muted">Real numbers against what we said we'd move, in a short written report and a recorded walkthrough.</p></div></div>
+      <div class="timeline-item reveal" data-reveal><div class="timeline-dot">4</div><div><h3>You decide, not us</h3><p class="muted">Continue month-to-month, change scope, or walk away with everything we built.</p></div></div>
+    </div>
+  </div>
+</section>
+
+{% include "faq-block.njk" %}
+{% include "cta-band.njk" %}

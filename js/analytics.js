@@ -9,7 +9,7 @@
   var META_PIXEL_ID = '';
 
   var w = window;
-  var onThanks = /\/thanks(\.html)?$/.test(location.pathname);
+  var onThanks = /\/thanks(\.html|\/)?$/.test(location.pathname);
 
   function loadScript(src) {
     var s = document.createElement('script');

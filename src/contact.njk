@@ -1,0 +1,40 @@
+---
+layout: base.njk
+bodyClass: page-inner page-contact
+permalink: /contact/
+title: "Contact Candor Digital | Book a Free 30-Minute Marketing Audit"
+description: "Book a free 30-minute marketing audit with Candor Digital in Melbourne. We review your socials, website and ads and tell you honestly what's worth doing. Reply within one business day."
+breadcrumbs: [{ name: "Contact", url: "/contact/" }]
+faqs:
+  - { q: "What's included in the free 30-minute audit?", a: "We review your social profiles, website, any ad accounts and your recent numbers, then tell you plainly what's working, what isn't and whether paid marketing is worth it for you right now. You get a short written summary either way." }
+  - { q: "Is the audit really free?", a: "Yes. There's no obligation and no sales script. If we're not the right fit, we'll tell you, and often point you to someone who is." }
+  - { q: "How quickly will you reply?", a: "Within one business day, usually sooner." }
+  - { q: "Do I need to prepare anything?", a: "Not really. Links to your website and social profiles are enough. If you've run ads before, access to those numbers helps." }
+---
+<section class="contact-page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
+    <div class="contact-card">
+      <span class="contact-blob" aria-hidden="true"></span>
+      <div class="contact-inner contact-inner--form">
+        <div class="contact-copy">
+          <div class="section-tag is-visible"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">free 30-minute audit</span></div>
+          <h1>Let's talk plainly about your marketing.</h1>
+          <p class="muted">Tell us a little about your business. We'll look at your socials, site and recent numbers, then tell you honestly whether spending more is worth it.</p>
+          <ol class="next-steps">
+            <li><b>You send this form.</b> Takes about a minute.</li>
+            <li><b>We reply within one business day</b> with a time for a 30-minute call.</li>
+            <li><b>We review your marketing</b> before the call, so it's useful from minute one.</li>
+            <li><b>You get a written summary</b> of what to fix first, whether or not you work with us.</li>
+          </ol>
+          <ul class="contact-points">
+            <li>Month-to-month, no lock-in</li>
+            <li>Prefer email? <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          </ul>
+        </div>
+        {% include "audit-form.njk" %}
+      </div>
+    </div>
+  </div>
+</section>
+{% include "faq-block.njk" %}
