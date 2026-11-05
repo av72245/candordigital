@@ -8,8 +8,11 @@ bodyClass: page-inner page-case
 <section class="case-shots">
   <div class="wrap">
     <div class="shots-pair reveal" data-reveal>
-      <figure class="device device--desktop"><span class="device-bar"><i></i><i></i><i></i><em>{{ liveLabel }}</em></span><img src="{{ shot }}" alt="{{ shotAlt }} on desktop" width="1200" height="667"></figure>
-      {% if shotMobile %}<figure class="device device--phone"><img src="{{ shotMobile }}" alt="{{ shotAlt }} on mobile" width="390" height="780" loading="lazy"></figure>{% endif %}
+      <figure class="laptop">
+        <div class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><div class="laptop-screen"><span class="device-bar"><i></i><i></i><i></i><em>{{ liveLabel }}</em></span><img src="{{ shot }}" alt="{{ shotAlt }} on desktop" width="1600" height="889"></div></div>
+        <div class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></div>
+      </figure>
+      {% if shotMobile %}<figure class="phone"><span class="phone-island" aria-hidden="true"></span><img src="{{ shotMobile }}" alt="{{ shotAlt }} on mobile" width="780" height="1560" loading="lazy"></figure>{% endif %}
     </div>
   </div>
 </section>
