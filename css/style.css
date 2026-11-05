@@ -798,3 +798,15 @@ footer{padding:26px 0 40px;}
 .device-bar i{width:8px; height:8px; border-radius:50%; background:var(--border);}
 .device-bar em{font-style:normal; font-size:.72rem; font-weight:600; color:var(--text-muted); margin-left:8px;}
 .device--phone{border-radius:28px; border-width:6px; border-color:var(--text);}
+
+/* ============ Fluid scale for large screens ============
+   Root size stays 16px up to ~1440px wide, then grows to 19px by ~2200px.
+   Font sizes are in rem, so all text scales; the container is in rem too. */
+html{font-size:clamp(16px, calc(0.4vw + 10.24px), 19px);}
+.wrap{max-width:82.5rem; padding-left:clamp(20px, 2.4vw, 48px); padding-right:clamp(20px, 2.4vw, 48px);}
+.topbar .wrap{padding-left:clamp(20px, 2.4vw, 48px); padding-right:clamp(20px, 2.4vw, 48px);}
+@media (min-width:1600px){
+  .hero-grid{gap:4rem; padding-top:6rem; padding-bottom:4.5rem;}
+  .cards, .principles, .who-grid, .price-mini, .included-grid, .steps-row{gap:1.1rem;}
+  section{padding:5rem 0;}
+}
