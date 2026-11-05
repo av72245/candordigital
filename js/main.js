@@ -353,3 +353,52 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     }
   });
 })();
+
+/* ---------- Tubelight nav: glowing pill follows hover + active section ---------- */
+(function tubelightNav(){
+  const pill = document.getElementById('navPill');
+  const light = document.getElementById('tubelight');
+  if (!pill || !light) return;
+  const links = [...pill.querySelectorAll('a[href^="#"]')];
+  let active = null;
+
+  function moveTo(link){
+    links.forEach(l => l.classList.toggle('is-lit', l === link));
+    if (!link){ light.classList.remove('on'); return; }
+    const p = pill.getBoundingClientRect(), r = link.getBoundingClientRect();
+    light.style.width = r.width + 'px';
+    light.style.transform = `translateX(${r.left - p.left}px)`;
+    light.classList.add('on');
+  }
+
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => moveTo(link));
+    link.addEventListener('focus', () => moveTo(link));
+  });
+  pill.addEventListener('mouseleave', () => moveTo(active));
+
+  // Light rests on whichever section is on screen
+  const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const link = links.find(l => l.getAttribute('href') === '#' + e.target.id);
+      links.forEach(l => l.classList.toggle('is-active', l === link));
+      active = link;
+      if (!pill.matches(':hover')) moveTo(active);
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => io.observe(s));
+  window.addEventListener('resize', () => moveTo(active));
+})();
+
+/* ---------- Cursor spotlight on principle cards ---------- */
+(function principleSpotlight(){
+  document.querySelectorAll('.principle').forEach(card => {
+    card.addEventListener('pointermove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+})();
