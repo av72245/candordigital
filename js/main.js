@@ -63,7 +63,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     const vh = window.innerHeight;
     const total = rect.height;
     const progressed = Math.min(Math.max(vh * 0.75 - rect.top, 0), total);
-    fill.style.height = (progressed / total * 100) + '%';
+    fill.style.setProperty('--p', (progressed / total * 100) + '%'); // CSS maps --p to height (vertical) or width (horizontal)
   }
   document.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
@@ -178,7 +178,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   function draw(){
     ctx.clearRect(0, 0, w, h);
     const styles = getComputedStyle(document.documentElement);
-    const accent = styles.getPropertyValue('--accent').trim() || '#3346E0';
+    const accent = styles.getPropertyValue('--accent').trim() || '#111111';
     const radius = 140 * devicePixelRatio;
 
     dots.forEach(d => {
