@@ -23,7 +23,7 @@ faqs:
   <div class="wrap">
     <div class="price-grid">
       {% for p in pricing.packages %}
-      <article class="price-card reveal{% if p.featured %} is-featured{% endif %}" data-reveal>
+      <article id="{{ p.name | slugify }}" class="price-card reveal{% if p.featured %} is-featured{% endif %}" data-reveal>
         {% if p.featured %}<span class="price-flag">Most popular</span>{% endif %}
         <h2>{{ p.name }}</h2>
         <p class="price-amount">{{ p.price }} <small>{{ p.per }}</small></p>

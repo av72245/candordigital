@@ -595,9 +595,6 @@ footer{padding:26px 0 40px;}
 .card-more::before{content:""; position:absolute; inset:0; border-radius:var(--radius);} /* whole card is clickable */
 .card-more span{transition:transform .3s cubic-bezier(.22,1,.36,1);}
 .card:hover .card-more span{transform:translateX(4px);}
-.card-more, .section-more a{background-image:linear-gradient(var(--lime),var(--lime)); background-size:0% .45em; background-position:0 88%; background-repeat:no-repeat; transition:background-size .4s cubic-bezier(.22,1,.36,1);}
-.card:hover .card-more, .section-more a:hover{background-size:100% .45em;}
-:root[data-theme="dark"] .card:hover .card-more, :root[data-theme="dark"] .section-more a:hover{color:var(--bg);}
 .section-more{margin:22px 0 0;}
 .section-more a{font-weight:700; color:var(--text); text-decoration:none; font-size:.95rem;}
 .work-actions{display:flex; gap:18px; flex-wrap:wrap; align-items:center;}
@@ -733,7 +730,6 @@ footer{padding:26px 0 40px;}
 .who-card h3{font-size:1.1rem; margin-bottom:6px;}
 .who-num{align-self:flex-start; font-size:.7rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:3px 9px; border-radius:999px; background:var(--lime); color:#111; margin-bottom:12px;}
 .who-card .card-more::before{content:""; position:absolute; inset:0; border-radius:var(--radius);}
-.who-card:hover .card-more{background-size:100% .45em;}
 
 .steps-row{list-style:none; counter-reset:st; padding:0; margin:0; display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
 @media (max-width:860px){ .steps-row{grid-template-columns:1fr 1fr;} }
@@ -757,7 +753,6 @@ footer{padding:26px 0 40px;}
 .shot-tags{display:flex; flex-wrap:wrap; gap:6px; padding:8px 18px 16px;}
 .shot-tags i{font-style:normal; font-size:.72rem; font-weight:700; padding:3px 9px; border-radius:999px; border:1px solid var(--border);}
 .work-preview--hub .card-more{margin:0 18px 18px;}
-.work-preview--hub .shot-card:hover .card-more{background-size:100% .45em;}
 
 .price-mini{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
 @media (max-width:760px){ .price-mini{grid-template-columns:1fr;} }
@@ -810,3 +805,24 @@ html{font-size:clamp(16px, calc(0.4vw + 10.24px), 19px);}
   .cards, .principles, .who-grid, .price-mini, .included-grid, .steps-row{gap:1.1rem;}
   section{padding:5rem 0;}
 }
+
+/* ---------- Doodled marker highlight on "more" links ---------- */
+.card-more, .section-more a, .pc-more{
+  align-self:flex-start; width:fit-content;
+  padding:.1em .35em; margin-left:-.35em; border-radius:4px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M4 9 C40 4 90 7 130 5 S185 3 197 8 L195 15 C170 14 190 22 196 30 C150 36 90 33 50 36 S10 37 3 33 C8 26 1 20 6 15 Z' fill='%23D9F24F'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:0 55%; background-size:0% 100%;
+  transition:background-size .45s cubic-bezier(.22,1,.36,1), color .2s ease .05s;
+}
+.card:hover .card-more, .who-card:hover .card-more, .shot-card:hover .card-more,
+.section-more a:hover, .section-more a:focus-visible, .price-chip:hover .pc-more{background-size:100% 100%; color:#111;}
+.card-more span, .section-more a span, .pc-more span{display:inline-block; transition:transform .3s cubic-bezier(.22,1,.36,1);}
+.card:hover .card-more span, .who-card:hover .card-more span, .section-more a:hover span, .price-chip:hover .pc-more span{transform:translateX(4px) rotate(-6deg);}
+
+/* ---------- Price chips: show what's inside ---------- */
+.pc-list{list-style:none; margin:10px 0 4px; padding:0; display:grid; gap:5px; font-size:.86rem;}
+.pc-list li{position:relative; padding-left:24px;}
+.pc-list li::before{content:"\2713"; position:absolute; left:0; top:2px; width:16px; height:16px; border-radius:50%; display:grid; place-items:center; font-size:.6rem; font-weight:800; background:var(--lime); color:#111;}
+.pc-more{margin-top:8px; font-size:.86rem; font-weight:700;}
+.price-card{scroll-margin-top:150px; transition:box-shadow .4s ease, border-color .4s ease;}
+.price-card:target{border-color:var(--lime); box-shadow:var(--shadow), 0 0 0 4px color-mix(in srgb,var(--lime) 35%,transparent), 0 24px 50px -24px var(--glow);}
