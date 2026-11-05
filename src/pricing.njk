@@ -1,0 +1,67 @@
+---
+layout: base.njk
+bodyClass: page-inner page-pricing
+permalink: /pricing/
+title: "Pricing | Digital Marketing Packages Melbourne | Candor Digital"
+description: "Clear pricing for social media management, Meta ads, email marketing and websites in Melbourne. Month-to-month, ad spend never marked up, free 30-minute audit before any quote."
+tag: "the number, up front"
+heading: "Simple pricing, <em>no lock-in</em>."
+lede: "Most agencies hide their prices behind a sales call. Here are our current ranges. Your exact quote follows a free 30-minute audit, so you only pay for what makes sense."
+secondaryCta: { label: "See services", url: "/services/" }
+breadcrumbs: [{ name: "Pricing", url: "/pricing/" }]
+faqHeading: "Pricing questions"
+faqs:
+  - { q: "Why is pricing a range instead of a fixed number?", a: "Because the work differs. One platform with light content costs less than three platforms with weekly video. The free audit tells us what you need, and the quote is fixed before we start." }
+  - { q: "Is ad spend included?", a: "No. Your Meta or Google ad budget is charged by the platform directly to your card and never marked up. Our fee covers the work only." }
+  - { q: "Are there setup fees?", a: "Ongoing services don't have setup fees. Websites and one-off builds, like email flow setup, are quoted as a fixed project price." }
+  - { q: "Is there a minimum term?", a: "Only the four-week trial scope. After that everything is month-to-month, and you can pause, change or stop with notice." }
+  - { q: "Do you offer discounts for longer commitments?", a: "We'd rather earn your business every month than lock you in, so we don't push long contracts. If you want a longer arrangement, ask in the audit." }
+---
+{% include "page-hero.njk" %}
+
+<section>
+  <div class="wrap">
+    <div class="price-grid">
+      {% for p in pricing.packages %}
+      <article class="price-card reveal{% if p.featured %} is-featured{% endif %}" data-reveal>
+        {% if p.featured %}<span class="price-flag">Most popular</span>{% endif %}
+        <h2>{{ p.name }}</h2>
+        <p class="price-amount">{{ p.price }} <small>{{ p.per }}</small></p>
+        <p class="muted">{{ p.line }}</p>
+        <ul class="check-list">{% for i in p.includes %}<li>{{ i }}</li>{% endfor %}</ul>
+        <a class="btn {% if p.featured %}btn-primary{% else %}btn-secondary{% endif %} magnetic" href="/contact/" data-hover><span>Start with a free audit</span></a>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="price-note muted">{{ pricing.note }}</p>
+  </div>
+</section>
+
+<section class="alt-band">
+  <div class="wrap two-col">
+    <div class="reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">always included</span></div>
+      <h2>What every plan comes with</h2>
+      <ul class="check-list">
+        <li>A free 30-minute audit before any quote</li>
+        <li>A one-page monthly report plus a five-minute video walkthrough</li>
+        <li>Direct access to the person doing the work</li>
+        <li>Every account, asset and file in your name</li>
+        <li>Month-to-month terms after the four-week trial</li>
+      </ul>
+    </div>
+    <div class="reveal" data-reveal style="transition-delay:.08s">
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">never included</span></div>
+      <h2>What you won&rsquo;t pay for</h2>
+      <ul class="cross-list">
+        <li>Markup on your ad spend</li>
+        <li>Setup fees on ongoing services</li>
+        <li>Lock-in contracts or exit fees</li>
+        <li>Reports padded with vanity metrics</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% include "faq-block.njk" %}
+{% include "cta-band.njk" %}

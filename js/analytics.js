@@ -39,7 +39,7 @@
 
   // A completed audit request lands on /thanks — count it as the lead conversion.
   if (onThanks) {
-    if (w.gtag) w.gtag('event', 'generate_lead', { form: 'audit-request' });
+    if (w.gtag) w.gtag('event', 'generate_lead');
     if (w.fbq) w.fbq('track', 'Lead');
   }
 
@@ -49,13 +49,14 @@
       el.addEventListener('click', function () { w.candorTrack('cta_click', { cta: el.getAttribute('data-track') }); });
     });
     // Form started — first interaction with the audit form
-    var form = document.getElementById('auditForm');
-    if (form) {
+    ['quickForm', 'auditForm'].forEach(function (id) {
+      var form = document.getElementById(id);
+      if (!form) return;
       var started = false;
       form.addEventListener('focusin', function () {
         if (started) return; started = true;
-        w.candorTrack('form_start', { form: 'audit-request' });
+        w.candorTrack('form_start', { form: form.getAttribute('name') });
       });
-    }
+    });
   });
 })();

@@ -1,0 +1,39 @@
+{
+ "@type": "ProfessionalService",
+ "@id": "https://candordigital.com.au/#business",
+ "name": "Candor Digital",
+ "url": "https://candordigital.com.au/",
+ "logo": "https://candordigital.com.au/assets/favicon-512.png",
+ "image": "https://candordigital.com.au/assets/og-mark.png",
+ "email": "akash@candordigital.com.au",
+ "description": "Melbourne-based digital marketing practice for small, ambitious brands: social and content, paid social ads, email and retention, analytics and reporting.",
+ "areaServed": [
+  {
+   "@type": "City",
+   "name": "Melbourne"
+  },
+  {
+   "@type": "State",
+   "name": "Victoria"
+  },
+  {
+   "@type": "Country",
+   "name": "Australia"
+  }
+ ],
+ "address": {
+  "@type": "PostalAddress",
+  "addressLocality": "Melbourne",
+  "addressRegion": "VIC",
+  "addressCountry": "AU"
+ },
+ "priceRange": "$$",
+ "knowsAbout": [
+  "Social media management",
+  "Meta Ads",
+  "Facebook and Instagram advertising",
+  "Email marketing",
+  "Marketing analytics",
+  "Website design"
+ ]
+}

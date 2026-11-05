@@ -359,7 +359,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   const pill = document.getElementById('navPill');
   const light = document.getElementById('tubelight');
   if (!pill || !light) return;
-  const links = [...pill.querySelectorAll('a')];
+  const links = [...pill.querySelectorAll(':scope > a, :scope > .nav-drop > a')];
   const onHome = location.pathname === '/' || location.pathname === '/index.html';
   let active = null;
 
@@ -394,15 +394,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     return;
   }
 
-  // Home: light follows whichever section is on screen
-  const byId = new Map();
-  links.forEach(l => { const h = new URL(l.href).hash; if (h) byId.set(h.slice(1), l); });
-  const servicesLink = links.find(l => new URL(l.href).pathname === '/services/');
-  if (servicesLink) byId.set('services', servicesLink);
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) setActive(byId.get(e.target.id) || null); });
-  }, { rootMargin: '-45% 0px -50% 0px' });
-  byId.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+  requestAnimationFrame(() => setActive(links.find(l => l.dataset.nav === 'home') || null));
 })();
 
 /* ---------- Cursor spotlight on principle cards ---------- */
@@ -421,7 +413,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   const input = document.getElementById('brandInput');
   const hint = document.getElementById('brandHint');
   const cta = document.getElementById('heroCtaText');
-  const formBiz = document.querySelector('#auditForm input[name="business"]');
+  const formBiz = document.querySelector('#quickForm input[name="business"], #auditForm input[name="business"]');
   if (!input) return;
 
   const samples = ['your café', 'Bloom & Co.', 'Kai’s Plumbing'];

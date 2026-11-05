@@ -4,6 +4,17 @@ bodyClass: page-inner page-case
 ---
 {% include "page-hero.njk" %}
 
+{% if shot %}
+<section class="case-shots">
+  <div class="wrap">
+    <div class="shots-pair reveal" data-reveal>
+      <figure class="device device--desktop"><span class="device-bar"><i></i><i></i><i></i><em>{{ liveLabel }}</em></span><img src="{{ shot }}" alt="{{ shotAlt }} on desktop" width="1200" height="667"></figure>
+      {% if shotMobile %}<figure class="device device--phone"><img src="{{ shotMobile }}" alt="{{ shotAlt }} on mobile" width="390" height="780" loading="lazy"></figure>{% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <section>
   <div class="wrap two-col two-col--wide">
     <div class="reveal" data-reveal>

@@ -1,0 +1,30 @@
+---
+layout: base.njk
+bodyClass: page-inner page-work
+permalink: /work/
+eleventyExcludeFromCollections: true
+tags: []
+title: "Our Work | Websites & Marketing Case Studies | Candor Digital"
+description: "Real projects by Candor Digital, Melbourne: websites, tools and marketing for a creator-broker personal brand and a mortgage comparison platform. No invented numbers."
+tag: "proof, not promises"
+heading: "Real projects, <em>built end to end</em>."
+lede: "We're a new practice, so the list is short. What you'll find here is exactly what we built and where each project stands, with no invented results."
+secondaryCta: { label: "See services", url: "/services/" }
+breadcrumbs: [{ name: "Work", url: "/work/" }]
+---
+{% include "page-hero.njk" %}
+<section>
+  <div class="wrap">
+    <div class="work-preview work-preview--hub">
+      {% for c in collections.case %}
+      <a class="shot-card reveal" data-reveal href="{{ c.url }}" data-hover>
+        <span class="shot-frame"><img src="{{ c.data.shot }}" alt="{{ c.data.shotAlt }}" loading="lazy" width="1200" height="667"></span>
+        <span class="shot-meta"><b>{{ c.data.client }}</b><span>{{ c.data.lede }}</span></span>
+        <span class="shot-tags">{% for t in c.data.servicesUsed %}<i>{{ t }}</i>{% endfor %}</span>
+        <span class="card-more">Read the case study <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include "cta-band.njk" %}

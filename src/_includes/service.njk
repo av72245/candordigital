@@ -4,6 +4,19 @@ bodyClass: page-inner page-service
 ---
 {% include "page-hero.njk" %}
 
+{% if problemHeading %}
+<section class="problem-band">
+  <div class="wrap two-col two-col--wide">
+    <div class="reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">the problem</span></div>
+      <h2>{{ problemHeading }}</h2>
+      <p class="muted">{{ problemBody }}</p>
+    </div>
+    <ul class="problem-list reveal" data-reveal style="transition-delay:.08s">{% for x in problemPoints %}<li>{{ x }}</li>{% endfor %}</ul>
+  </div>
+</section>
+{% endif %}
+
 <section class="split-section">
   <div class="wrap">
     <div class="section-head reveal" data-reveal>

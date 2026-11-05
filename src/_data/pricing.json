@@ -1,0 +1,27 @@
+{
+  "packages": [
+    {
+      "name": "Single channel",
+      "price": "$300–500",
+      "per": "/month",
+      "line": "One service, done properly. Ideal for the 4-week trial.",
+      "includes": ["One of social, Meta ads or email", "Monthly plan you approve", "One-page report + 5-min video", "Month-to-month after the trial"]
+    },
+    {
+      "name": "Two channels",
+      "price": "$500–800",
+      "per": "/month",
+      "line": "Two services working together, reported in one place.",
+      "includes": ["Any two of social, Meta ads, email", "Shared strategy across both", "Combined monthly report", "Month-to-month"],
+      "featured": true
+    },
+    {
+      "name": "Website build",
+      "price": "Quoted",
+      "per": "per project",
+      "line": "A fixed project price after the free audit, no surprises.",
+      "includes": ["Copy help and custom design", "Forms, analytics, SEO basics", "Usually 3–6 weeks", "You own the site and domain"]
+    }
+  ],
+  "note": "Ad spend on Meta or Google is billed directly to your card by the platform and never marked up. Every quote follows the free 30-minute audit."
+}
