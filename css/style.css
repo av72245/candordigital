@@ -764,7 +764,8 @@ footer{padding:26px 0 40px;}
 .shot-tags i{font-style:normal; font-size:.72rem; font-weight:700; padding:3px 9px; border-radius:999px; border:1px solid var(--border);}
 .work-preview--hub .card-more{margin:0 18px 18px;}
 
-.price-mini{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+.price-mini{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+@media (max-width:1100px){ .price-mini{grid-template-columns:repeat(2,1fr);} }
 @media (max-width:760px){ .price-mini{grid-template-columns:1fr;} }
 .price-chip{display:grid; gap:4px; padding:20px; border-radius:var(--radius); border:1px solid var(--border); background:var(--surface); color:var(--text); text-decoration:none; transition:transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease;}
 .price-chip:hover{transform:translateY(-4px); border-color:var(--text);}
@@ -776,8 +777,9 @@ footer{padding:26px 0 40px;}
 :root[data-theme="dark"] .price-chip.is-featured, :root[data-theme="dark"] .price-card.is-featured{border-color:var(--lime);}
 
 /* Pricing page */
-.price-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; align-items:stretch;}
-@media (max-width:900px){ .price-grid{grid-template-columns:1fr;} }
+.price-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; align-items:stretch;}
+@media (max-width:1180px){ .price-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .price-grid{grid-template-columns:1fr;} }
 .price-card{position:relative; display:flex; flex-direction:column; gap:6px; padding:26px 24px; border-radius:20px; background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow);}
 .price-card h2{font-size:1.25rem; margin:0;}
 .price-amount{font-family:var(--font-display); font-size:2.2rem; font-weight:600; margin:4px 0 0;}
@@ -882,3 +884,5 @@ html{font-size:clamp(16px, calc(0.4vw + 10.24px), 19px);}
 @media (max-width:960px){ .scroll-cue{display:none;} }
 .case-shots{overflow-x:clip;}
 @media (max-width:760px){ .laptop-deck{width:106%; margin-left:-3%;} .laptop{filter:drop-shadow(0 22px 26px rgba(0,0,0,.35));} }
+
+.pc-price .from, .price-amount .from{font-family:var(--font-sans); font-size:.42em; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:.06em; vertical-align:.35em; margin-right:.15em;}

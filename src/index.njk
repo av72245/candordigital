@@ -179,7 +179,7 @@ homeFaqIdx: [7, 6, 0, 10]
       </div>
       <div class="price-mini">
         {% for p in pricing.packages %}
-        <a class="price-chip reveal{% if p.featured %} is-featured{% endif %}" data-reveal href="/pricing/#{{ p.name | slugify }}" data-hover><b>{{ p.name }}</b><span class="pc-price">{{ p.price }} <small>{{ p.per }}</small></span><span class="pc-line">{{ p.line }}</span><ul class="pc-list">{% for i in p.includes | batch(3) | first %}<li>{{ i }}</li>{% endfor %}</ul><span class="pc-more">Full details <span aria-hidden="true">&rarr;</span></span></a>
+        <a class="price-chip reveal{% if p.featured %} is-featured{% endif %}" data-reveal href="/pricing/#{{ p.name | slugify }}" data-hover><b>{{ p.name }}</b><span class="pc-price">{{ p.price | replace("from ", "<span class=\"from\">from</span> ") | safe }} <small>{{ p.per }}</small></span><span class="pc-line">{{ p.line }}</span><ul class="pc-list">{% for i in p.includes | batch(3) | first %}<li>{{ i }}</li>{% endfor %}</ul><span class="pc-more">Full details <span aria-hidden="true">&rarr;</span></span></a>
         {% endfor %}
       </div>
       <p class="section-more"><a href="/pricing/" data-hover>See what&rsquo;s included in each <span aria-hidden="true">&rarr;</span></a></p>

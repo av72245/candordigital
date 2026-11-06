@@ -6,15 +6,16 @@ title: "Pricing | Digital Marketing Packages Melbourne | Candor Digital"
 description: "Clear pricing for social media management, Meta ads, email marketing and websites in Melbourne. Month-to-month, ad spend never marked up, free 30-minute audit before any quote."
 tag: "the number, up front"
 heading: "Simple pricing, <em>no lock-in</em>."
-lede: "Most agencies hide their prices behind a sales call. Here are our current ranges. Your exact quote follows a free 30-minute audit, so you only pay for what makes sense."
+lede: "Most agencies hide their prices behind a sales call. Here are ours. Start with a one-off trial, then go month to month. Your exact quote follows a free 30-minute audit, so you only pay for what makes sense."
 secondaryCta: { label: "See services", url: "/services/" }
 breadcrumbs: [{ name: "Pricing", url: "/pricing/" }]
 faqHeading: "Pricing questions"
 faqs:
-  - { q: "Why is pricing a range instead of a fixed number?", a: "Because the work differs. One platform with light content costs less than three platforms with weekly video. The free audit tells us what you need, and the quote is fixed before we start." }
+  - { q: "Why 'from' prices instead of one fixed number?", a: "Because the work differs. One platform with light content costs less than three platforms with weekly video. The 'from' price is the honest starting point; the free audit tells us what you need, and your quote is fixed in writing before we start." }
+  - { q: "What does the $450 trial include?", a: "Four weeks on one channel (social, Meta ads or email), a plan agreed before we start, and a week-4 report with a five-minute video. After that you decide: continue month to month, change direction or walk away. There's no obligation to continue." }
   - { q: "Is ad spend included?", a: "No. Your Meta or Google ad budget is charged by the platform directly to your card and never marked up. Our fee covers the work only." }
   - { q: "Are there setup fees?", a: "Ongoing services don't have setup fees. Websites and one-off builds, like email flow setup, are quoted as a fixed project price." }
-  - { q: "Is there a minimum term?", a: "Only the four-week trial scope. After that everything is month-to-month, and you can pause, change or stop with notice." }
+  - { q: "Is there a minimum term?", a: "No. The trial is a one-off four weeks, and after that everything is month-to-month. You can pause, change or stop with notice." }
   - { q: "Do you offer discounts for longer commitments?", a: "We'd rather earn your business every month than lock you in, so we don't push long contracts. If you want a longer arrangement, ask in the audit." }
 ---
 {% include "page-hero.njk" %}
@@ -26,7 +27,7 @@ faqs:
       <article id="{{ p.name | slugify }}" class="price-card reveal{% if p.featured %} is-featured{% endif %}" data-reveal>
         {% if p.featured %}<span class="price-flag">Most popular</span>{% endif %}
         <h2>{{ p.name }}</h2>
-        <p class="price-amount">{{ p.price }} <small>{{ p.per }}</small></p>
+        <p class="price-amount">{{ p.price | replace("from ", "<span class=\"from\">from</span> ") | safe }} <small>{{ p.per }}</small></p>
         <p class="muted">{{ p.line }}</p>
         <ul class="check-list">{% for i in p.includes %}<li>{{ i }}</li>{% endfor %}</ul>
         <a class="btn {% if p.featured %}btn-primary{% else %}btn-secondary{% endif %} magnetic" href="/contact/" data-hover><span>Start with a free audit</span></a>
@@ -47,7 +48,7 @@ faqs:
         <li>A one-page monthly report plus a five-minute video walkthrough</li>
         <li>Direct access to the person doing the work</li>
         <li>Every account, asset and file in your name</li>
-        <li>Month-to-month terms after the four-week trial</li>
+        <li>Month-to-month terms, no lock-in contracts</li>
       </ul>
     </div>
     <div class="reveal" data-reveal style="transition-delay:.08s">

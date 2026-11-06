@@ -1,27 +1,54 @@
 {
   "packages": [
     {
+      "name": "4-week trial",
+      "price": "$450",
+      "per": "one-off",
+      "line": "One channel for four weeks, clearly scoped. The low-risk way to see how we work.",
+      "includes": [
+        "One of social, Meta ads or email",
+        "Plan agreed before we start",
+        "Week-4 report + 5-min video",
+        "No obligation to continue"
+      ]
+    },
+    {
       "name": "Single channel",
-      "price": "$300–500",
+      "price": "from $690",
       "per": "/month",
-      "line": "One service, done properly. Ideal for the 4-week trial.",
-      "includes": ["One of social, Meta ads or email", "Monthly plan you approve", "One-page report + 5-min video", "Month-to-month after the trial"]
+      "line": "One service, done properly, month to month.",
+      "includes": [
+        "One of social, Meta ads or email",
+        "Monthly plan you approve",
+        "One-page report + 5-min video",
+        "Month-to-month, no lock-in"
+      ]
     },
     {
       "name": "Two channels",
-      "price": "$500–800",
+      "price": "from $1,190",
       "per": "/month",
       "line": "Two services working together, reported in one place.",
-      "includes": ["Any two of social, Meta ads, email", "Shared strategy across both", "Combined monthly report", "Month-to-month"],
+      "includes": [
+        "Any two of social, Meta ads, email",
+        "Shared strategy across both",
+        "Combined monthly report",
+        "Month-to-month, no lock-in"
+      ],
       "featured": true
     },
     {
       "name": "Website build",
-      "price": "Quoted",
+      "price": "from $1,900",
       "per": "per project",
       "line": "A fixed project price after the free audit, no surprises.",
-      "includes": ["Copy help and custom design", "Forms, analytics, SEO basics", "Usually 3–6 weeks", "You own the site and domain"]
+      "includes": [
+        "Copy help and custom design",
+        "Forms, analytics, SEO basics",
+        "Usually 3–6 weeks",
+        "You own the site and domain"
+      ]
     }
   ],
-  "note": "Ad spend on Meta or Google is billed directly to your card by the platform and never marked up. Every quote follows the free 30-minute audit."
+  "note": "Prices are in AUD. Ad spend on Meta or Google is billed directly to your card by the platform and never marked up. Your exact quote comes in writing after the free 30-minute audit, before you pay anything."
 }
