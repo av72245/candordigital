@@ -6,7 +6,7 @@
  */
 (function () {
   var GA4_ID = 'G-72MMMVTC8K';
-  var META_PIXEL_ID = '';
+  var META_PIXEL_ID = '1387052899974286';
 
   var w = window;
   // Only track the live site, so local previews don't pollute the numbers.
