@@ -9,10 +9,10 @@ bodyClass: page-inner page-case
   <div class="wrap">
     <div class="shots-pair reveal" data-reveal>
       <figure class="laptop">
-        <div class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><div class="laptop-screen"><span class="device-bar"><i></i><i></i><i></i><em>{{ liveLabel }}</em></span><img src="{{ shot }}" alt="{{ shotAlt }} on desktop" width="1600" height="889"></div></div>
+        <div class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><div class="laptop-screen"><span class="device-bar"><i></i><i></i><i></i><em>{{ liveLabel }}</em></span><picture><source type="image/webp" srcset="{{ shot | replace('.jpg', '-sm.webp') }} 800w, {{ shot | replace('.jpg', '-lg.webp') }} {{ shotW }}w" sizes="(max-width: 760px) 94vw, 900px"><img src="{{ shot }}" alt="{{ shotAlt }} on desktop" width="1600" height="889" fetchpriority="high"></picture></div></div>
         <div class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></div>
       </figure>
-      {% if shotMobile %}<figure class="phone"><span class="phone-island" aria-hidden="true"></span><img src="{{ shotMobile }}" alt="{{ shotAlt }} on mobile" width="780" height="1560" loading="lazy"></figure>{% endif %}
+      {% if shotMobile %}<figure class="phone"><span class="phone-island" aria-hidden="true"></span><picture><source type="image/webp" srcset="{{ shotMobile | replace('.jpg', '.webp') }}"><img src="{{ shotMobile }}" alt="{{ shotAlt }} on mobile" width="780" height="1560" loading="lazy" decoding="async"></picture></figure>{% endif %}
     </div>
   </div>
 </section>

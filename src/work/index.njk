@@ -4,8 +4,8 @@ bodyClass: page-inner page-work
 permalink: /work/
 eleventyExcludeFromCollections: true
 tags: []
-title: "Our Work | Websites & Marketing Case Studies | Candor Digital"
-description: "Real projects by Candor Digital, Melbourne: websites, tools and marketing for a creator-broker personal brand and a mortgage comparison platform. No invented numbers."
+title: "Our Work: Website & Marketing Projects | Candor Digital"
+description: "Real projects by Candor Digital, Melbourne: a creator-broker personal brand site and a mortgage tools platform. What we built, with no invented numbers."
 tag: "proof, not promises"
 heading: "Real projects, <em>built end to end</em>."
 lede: "We're a new practice, so the list is short. What you'll find here is exactly what we built and where each project stands, with no invented results."
@@ -18,7 +18,7 @@ breadcrumbs: [{ name: "Work", url: "/work/" }]
     <div class="work-preview work-preview--hub">
       {% for c in collections.case %}
       <a class="shot-card reveal" data-reveal href="{{ c.url }}" data-hover>
-        <span class="shot-frame"><span class="laptop laptop--mini"><span class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><span class="laptop-screen"><img src="{{ c.data.shot }}" alt="{{ c.data.shotAlt }}" loading="lazy" width="1600" height="889"></span></span><span class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></span></span></span>
+        <span class="shot-frame"><span class="laptop laptop--mini"><span class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><span class="laptop-screen"><picture><source type="image/webp" srcset="{{ c.data.shot | replace('.jpg', '-sm.webp') }} 800w, {{ c.data.shot | replace('.jpg', '-lg.webp') }} {{ c.data.shotW }}w" sizes="(max-width: 760px) 80vw, 460px"><img src="{{ c.data.shot }}" alt="{{ c.data.shotAlt }}" loading="lazy" decoding="async" width="1600" height="889"></picture></span></span><span class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></span></span></span>
         <span class="shot-meta"><b>{{ c.data.client }}</b><span>{{ c.data.lede }}</span></span>
         <span class="shot-tags">{% for t in c.data.servicesUsed %}<i>{{ t }}</i>{% endfor %}</span>
         <span class="card-more">Read the case study <span aria-hidden="true">&rarr;</span></span>

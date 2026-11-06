@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: "Candor Digital | Honest Digital Marketing Agency in Melbourne"
+title: "Candor Digital | Honest Digital Marketing Agency Melbourne"
 ogTitle: "Candor Digital"
-description: "Candor Digital is a Melbourne digital marketing agency for small businesses: social media management, Meta ads, email marketing and websites, with plain-English reporting. Month-to-month, no lock-in. Free 30-minute audit."
+description: "Melbourne digital marketing for small businesses: social media, Meta ads, email and websites. Plain-English reports, month-to-month. Free 30-minute audit."
 bodyClass: "page-home"
 homeFaqIdx: [7, 6, 0, 10]
 ---
@@ -160,7 +160,7 @@ homeFaqIdx: [7, 6, 0, 10]
       <div class="work-preview">
         {% for c in collections.case %}
         <a class="shot-card reveal" data-reveal href="{{ c.url }}" data-hover>
-          <span class="shot-frame"><span class="laptop laptop--mini"><span class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><span class="laptop-screen"><img src="{{ c.data.shot }}" alt="{{ c.data.shotAlt }}" loading="lazy" width="1600" height="889"></span></span><span class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></span></span></span>
+          <span class="shot-frame"><span class="laptop laptop--mini"><span class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><span class="laptop-screen"><picture><source type="image/webp" srcset="{{ c.data.shot | replace('.jpg', '-sm.webp') }} 800w, {{ c.data.shot | replace('.jpg', '-lg.webp') }} {{ c.data.shotW }}w" sizes="(max-width: 760px) 80vw, 460px"><img src="{{ c.data.shot }}" alt="{{ c.data.shotAlt }}" loading="lazy" decoding="async" width="1600" height="889"></picture></span></span><span class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></span></span></span>
           <span class="shot-meta"><b>{{ c.data.client }}</b><span>{{ c.data.cardLine }}</span></span>
           <span class="shot-tags">{% for t in c.data.servicesUsed %}<i>{{ t }}</i>{% endfor %}</span>
         </a>

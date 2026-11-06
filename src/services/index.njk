@@ -3,7 +3,7 @@ layout: base.njk
 bodyClass: page-inner
 eleventyExcludeFromCollections: true
 title: "Digital Marketing Services Melbourne | Candor Digital"
-description: "Social media management, Meta ads, email marketing and websites for Melbourne small businesses. Plain-English reporting, month-to-month, free 30-minute audit."
+description: "Social media management, Meta ads, email marketing and websites for Melbourne small businesses. Plain-English reports, month-to-month, free audit."
 tag: "what we actually do"
 heading: "Four services, done <em>properly</em>."
 lede: "We keep the list short on purpose. Each service below comes with plain-English reporting, month-to-month terms and a free audit first, so you only pay for what makes sense for your business."
@@ -16,6 +16,7 @@ faqs:
 {% include "page-hero.njk" %}
 <section>
   <div class="wrap">
+    <h2 class="visually-hidden">Our four services</h2>
     <div class="cards services-hub">
       {% for s in collections.service %}
       <article class="card reveal" data-reveal>
