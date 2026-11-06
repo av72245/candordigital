@@ -280,13 +280,25 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     requestAnimationFrame(frame);
   }
 
-  words.forEach((w, i) => {
-    const finalText = w.textContent;
-    scramble(w, finalText, delays[i] !== undefined ? delays[i] : 330, false);
-  });
-  if (input){
-    scramble(input, input.value || 'you', delays[3], true);
+  // Lock each word to its final width while it scrambles, so random letters
+  // never re-wrap the headline (keeps Cumulative Layout Shift at zero).
+  function lock(el){ el.style.width = el.getBoundingClientRect().width + 'px'; el.style.whiteSpace = 'nowrap'; }
+  function unlock(el){ el.style.width = ''; el.style.whiteSpace = ''; }
+
+  function start(){
+    words.forEach((w, i) => {
+      const finalText = w.textContent;
+      lock(w);
+      scramble(w, finalText, delays[i] !== undefined ? delays[i] : 330, false);
+      setTimeout(() => unlock(w), (delays[i] || 330) + duration + 80);
+    });
+    if (input){
+      scramble(input, input.value || 'you', delays[3], true);
+    }
   }
+  // Wait for the display font so widths are measured once, in the real typeface.
+  const ready = document.fonts && document.fonts.ready ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1200))]) : Promise.resolve();
+  ready.then(start);
 })();
 
 /* ---------- Type-your-brand hero: personalizes the headline live ---------- */
@@ -304,17 +316,24 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   mirror.style.visibility = 'hidden';
   document.body.appendChild(mirror);
 
+  // Until a real visitor types, the field keeps the width of the longest demo name,
+  // so the auto-typing demo never re-wraps the headline (no layout shift / CLS).
+  const samples = (input.dataset.samples || '').split('|').filter(Boolean);
+  let reserved = true;
+  const measure = text => { mirror.textContent = text; return mirror.offsetWidth + 10; };
   function sizeToContent(){
     const cs = getComputedStyle(input);
     mirror.style.font = cs.font;
     mirror.style.letterSpacing = cs.letterSpacing;
-    mirror.textContent = input.value.length ? input.value : (input.placeholder || 'you');
-    const w = mirror.offsetWidth + 10;
-    input.style.width = Math.max(w, 28) + 'px';
+    let w = measure(input.value.length ? input.value : (input.placeholder || 'you'));
+    if (reserved) samples.forEach(t => { w = Math.max(w, measure(t)); });
+    input.style.width = Math.min(Math.max(w, 28), input.parentElement.clientWidth || w) + 'px';
   }
+  const release = () => { reserved = false; };
+  ['pointerdown', 'keydown', 'touchstart'].forEach(ev => input.addEventListener(ev, release, { passive: true }));
 
   function updateSub(){
-    if (!subBrand) return;
+    if (!subBrand || input.classList.contains('is-demo')) return; // demo text never reflows the intro
     const v = input.value.trim();
     if (!v || v.toLowerCase() === 'you'){
       subBrand.textContent = 'small, ambitious brands';
@@ -332,6 +351,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   // Initial box sizing right away; the decode effect (if running) dispatches its own
   // 'input' event once it settles, which re-runs this with the correct final text.
   sizeToContent(); updateSub();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeToContent);
 })();
 
 /* ---------- Footer signature + logo easter egg ---------- */
@@ -416,7 +436,7 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
   const formBiz = document.querySelector('#quickForm input[name="business"], #auditForm input[name="business"]');
   if (!input) return;
 
-  const samples = ['your café', 'Bloom & Co.', 'Kai’s Plumbing'];
+  const samples = (input.dataset.samples || 'your café|Bloom & Co.').split('|');
   const ctaDefault = cta ? cta.textContent : '';
   let userTookOver = false, timers = [], tracked = false, autoFilledBiz = false;
 
