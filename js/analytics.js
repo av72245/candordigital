@@ -5,10 +5,12 @@
  *   Meta Pixel: Meta Events Manager > Data sources > Pixel ID (numbers only)
  */
 (function () {
-  var GA4_ID = '';
+  var GA4_ID = 'G-72MMMVTC8K';
   var META_PIXEL_ID = '';
 
   var w = window;
+  // Only track the live site, so local previews don't pollute the numbers.
+  if (!/(^|\.)candordigital\.com\.au$/.test(location.hostname)) { GA4_ID = ''; META_PIXEL_ID = ''; }
   var onThanks = /\/thanks(\.html|\/)?$/.test(location.pathname);
 
   function loadScript(src) {
