@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "ember-and-oat",
+    "name": "Ember & Oat",
+    "trade": "Café",
+    "area": "Fitzroy",
+    "scene": "cup",
+    "fonts": { "display": "DM Serif Display", "body": "DM Sans", "href": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap", "displayWeight": 400 },
+    "colors": { "bg": "#2A1C15", "surface": "#36251C", "text": "#F4ECDF", "muted": "#CDBBA6", "accent": "#E2662E", "onAccent": "#2A1C15", "soft": "#EFE5D5" },
+    "palette": [
+      { "name": "Espresso", "hex": "#2A1C15" },
+      { "name": "Oat", "hex": "#EFE5D5" },
+      { "name": "Ember", "hex": "#E2662E" }
+    ],
+    "nav": ["Menu", "Catering", "Visit"],
+    "navCta": "Order ahead",
+    "headline": "Slow coffee. <em>Warm</em> mornings.",
+    "sub": "Specialty coffee, house-baked pastries and a sunny window seat on Brunswick Street.",
+    "ctaPrimary": "See the menu",
+    "ctaSecondary": "Order ahead",
+    "chips": ["Open 7am daily", "No oat-milk upcharge", "Skip the queue"],
+    "sectionTitle": "Made here, every morning",
+    "features": [
+      { "t": "Single-origin espresso", "d": "A rotating bean from a small Victorian roaster, dialled in fresh each morning." },
+      { "t": "Baked in-house", "d": "Croissants, banana bread and a savoury of the day, out of the oven by seven." },
+      { "t": "Catering for offices", "d": "Coffee and pastry boxes for teams of ten to fifty, delivered across the inner north." }
+    ],
+    "intent": "Warm and slow, the opposite of a chain. A big serif headline, ember for actions, and steam that actually rises.",
+    "alt": "Concept homepage for Ember & Oat, a fictional Fitzroy café, with a steaming coffee cup on an espresso-brown background"
+  },
+  {
+    "slug": "northline-plumbing",
+    "name": "Northline Plumbing",
+    "trade": "Plumber",
+    "area": "Melbourne's north",
+    "scene": "ripple",
+    "fonts": { "display": "Space Grotesk", "body": "Inter", "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;700&display=swap", "displayWeight": 700 },
+    "colors": { "bg": "#0E1A2B", "surface": "#15243A", "text": "#EEF3F8", "muted": "#A9B8C9", "accent": "#F25C3B", "onAccent": "#FFFFFF", "soft": "#E6EDF3" },
+    "palette": [
+      { "name": "Deep Navy", "hex": "#0E1A2B" },
+      { "name": "Mist", "hex": "#E6EDF3" },
+      { "name": "Signal Coral", "hex": "#F25C3B" }
+    ],
+    "nav": ["Services", "Pricing", "Areas"],
+    "navCta": "Book a plumber",
+    "headline": "Burst pipe? We're <em>already</em> on the way.",
+    "sub": "Licensed plumbers for blocked drains, hot water and gas across Melbourne's north. You get a fixed price before we start.",
+    "ctaPrimary": "Book a plumber",
+    "ctaSecondary": "See prices",
+    "chips": ["Same-day callouts", "Fixed quotes upfront", "7 days, 7am–9pm"],
+    "sectionTitle": "Sorted on the first visit",
+    "features": [
+      { "t": "Blocked drains", "d": "Camera inspection and jetting, so the blockage is gone, not just pushed further down." },
+      { "t": "Hot water", "d": "Repairs and same-week replacements for gas, electric and heat-pump systems." },
+      { "t": "Gas fitting", "d": "Leak checks, cooktops and heaters, with compliance paperwork handled for you." }
+    ],
+    "intent": "Calm under pressure. Deep navy reads as trustworthy, and one hot coral colour is saved for the button that matters: booking.",
+    "alt": "Concept homepage for Northline Plumbing, a fictional Melbourne plumber, with coral ripples on a deep navy background"
+  },
+  {
+    "slug": "saltbush-studio",
+    "name": "Saltbush Studio",
+    "trade": "Hair & beauty salon",
+    "area": "Northcote",
+    "scene": "arch",
+    "fonts": { "display": "Cormorant Garamond", "body": "Jost", "href": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500&display=swap", "displayWeight": 600 },
+    "colors": { "bg": "#F6F0E8", "surface": "#EFE6DA", "text": "#2E2A25", "muted": "#6E665C", "accent": "#C8876A", "onAccent": "#FFFFFF", "soft": "#8C9B85" },
+    "palette": [
+      { "name": "Cream", "hex": "#F6F0E8" },
+      { "name": "Sage", "hex": "#8C9B85" },
+      { "name": "Clay", "hex": "#C8876A" }
+    ],
+    "nav": ["Services", "Stylists", "Studio"],
+    "navCta": "Book online",
+    "headline": "Hair that feels like you, <em>only lighter.</em>",
+    "sub": "Colour, cuts and treatments in a calm, plant-filled studio on High Street. Book online in under a minute.",
+    "ctaPrimary": "Book online",
+    "ctaSecondary": "View services",
+    "chips": ["Online booking", "Low-tox colour", "Late nights Thursday"],
+    "sectionTitle": "A slower kind of appointment",
+    "features": [
+      { "t": "Lived-in colour", "d": "Balayage and soft blondes that grow out gently, so you're not back every five weeks." },
+      { "t": "Precision cuts", "d": "A proper consult first, then a cut that works with your texture, not against it." },
+      { "t": "Scalp treatments", "d": "Calming treatments and take-home advice for dry, oily or colour-tired hair." }
+    ],
+    "intent": "Soft and editorial, like a magazine spread. Arched windows and leaves bring the plant-filled studio onto the screen.",
+    "alt": "Concept homepage for Saltbush Studio, a fictional Northcote salon, with arched windows and leaves in sage and clay"
+  },
+  {
+    "slug": "fernhollow-builders",
+    "name": "Fernhollow Builders",
+    "trade": "Builder & renovations",
+    "area": "Melbourne's east",
+    "scene": "blueprint",
+    "fonts": { "display": "Archivo", "body": "Inter", "href": "https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&family=Inter:wght@400;500;700&display=swap", "displayWeight": 800 },
+    "colors": { "bg": "#1B1C1E", "surface": "#242528", "text": "#F1EFEA", "muted": "#B3AFA7", "accent": "#E0A23A", "onAccent": "#1B1C1E", "soft": "#BDB9B1" },
+    "palette": [
+      { "name": "Charcoal", "hex": "#1B1C1E" },
+      { "name": "Concrete", "hex": "#BDB9B1" },
+      { "name": "Ochre", "hex": "#E0A23A" }
+    ],
+    "nav": ["Projects", "Process", "About"],
+    "navCta": "Get a quote",
+    "headline": "Renovations, built right <em>the first time.</em>",
+    "sub": "Extensions, kitchens and full home renovations across Melbourne's east, with one fixed-price quote and a weekly update.",
+    "ctaPrimary": "Get a fixed quote",
+    "ctaSecondary": "See projects",
+    "chips": ["Fixed-price quotes", "Weekly site updates", "Design to handover"],
+    "sectionTitle": "No surprises, start to finish",
+    "features": [
+      { "t": "Extensions", "d": "Second storeys and rear extensions, planned around how your family actually lives." },
+      { "t": "Kitchens & bathrooms", "d": "Full fit-outs with a fixed schedule, so you're not washing dishes in the laundry for months." },
+      { "t": "Weekly updates", "d": "Photos and a plain-English progress note every Friday, whether you ask or not." }
+    ],
+    "intent": "Solid and engineered. Heavy type, a blueprint grid and an ochre line drawing say 'we plan before we build'.",
+    "alt": "Concept homepage for Fernhollow Builders, a fictional Melbourne builder, with an ochre line drawing of a house on a blueprint grid"
+  }
+]

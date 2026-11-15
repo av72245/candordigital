@@ -890,3 +890,25 @@ html{font-size:clamp(16px, calc(0.4vw + 10.24px), 19px);}
 .visually-hidden{position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;}
 
 .laptop-screen picture, .phone picture{display:contents;}
+
+/* ---------- Concept sites gallery ---------- */
+.concept-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px;}
+@media (max-width:860px){ .concept-grid{grid-template-columns:1fr;} }
+.concept-card{display:flex; flex-direction:column; text-decoration:none; color:var(--text); border-radius:20px; border:1px solid var(--border); background:var(--surface); overflow:hidden; transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, border-color .3s ease;}
+.concept-card:hover{transform:translateY(-5px); border-color:color-mix(in srgb,var(--lime) 60%,var(--border)); box-shadow:var(--shadow), 0 24px 50px -26px var(--glow);}
+.concept-card:hover .laptop--mini{transform:translateY(-4px) scale(1.02);}
+.concept-body{display:flex; flex-direction:column; gap:12px; padding:18px 20px 20px;}
+.concept-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 12px;}
+.concept-head b{font-family:var(--font-display); font-size:1.25rem;}
+.concept-head i{font-style:normal; font-size:.82rem; font-weight:600; color:var(--text-muted);}
+.swatches{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
+.swatch{display:grid; grid-template-columns:22px 1fr; grid-template-rows:auto auto; column-gap:8px; align-items:center; padding:8px; border-radius:12px; background:var(--surface-alt); border:1px solid var(--border);}
+.swatch .chip{grid-row:1 / span 2; width:22px; height:22px; border-radius:7px; box-shadow:inset 0 0 0 1px rgba(127,127,127,.35);}
+.sw-name{font-size:.78rem; font-weight:700; line-height:1.2;}
+.sw-hex{font-size:.7rem; color:var(--text-muted); font-variant-numeric:tabular-nums; letter-spacing:.02em;}
+.concept-intent{font-size:.9rem; color:var(--text-muted);}
+.concept-card .card-more{margin-top:2px;}
+.concept-card:hover .card-more{background-size:100% 100%; color:#111;}
+.concept-card:hover .card-more span{transform:translateX(4px) rotate(-6deg);}
+.concept-teaser{margin-left:18px;}
+@media (max-width:640px){ .concept-teaser{display:inline-block; margin:10px 0 0;} }

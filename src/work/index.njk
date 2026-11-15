@@ -8,7 +8,7 @@ title: "Our Work: Website & Marketing Projects | Candor Digital"
 description: "Real projects by Candor Digital, Melbourne: a creator-broker personal brand site and a mortgage tools platform. What we built, with no invented numbers."
 tag: "proof, not promises"
 heading: "Real projects, <em>built end to end</em>."
-lede: "We're a new practice, so the list is short. What you'll find here is exactly what we built and where each project stands, with no invented results."
+lede: "We're a new practice, so the client list is short. Below it are four concept sites we designed to show our range, clearly marked as concepts."
 secondaryCta: { label: "See services", url: "/services/" }
 breadcrumbs: [{ name: "Work", url: "/work/" }]
 ---
@@ -22,6 +22,28 @@ breadcrumbs: [{ name: "Work", url: "/work/" }]
         <span class="shot-meta"><b>{{ c.data.client }}</b><span>{{ c.data.lede }}</span></span>
         <span class="shot-tags">{% for t in c.data.servicesUsed %}<i>{{ t }}</i>{% endfor %}</span>
         <span class="card-more">Read the case study <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section id="concepts" class="concepts alt-band">
+  <div class="wrap">
+    <div class="section-head reveal" data-reveal>
+      <div class="section-tag"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">concept sites</span></div>
+      <h2>What we'd build for a business like yours</h2>
+      <p class="muted">Four homepages for fictional Melbourne businesses, each with its own type, palette and personality. They aren't clients: they show the range before you trust us with yours. Click one to open the live page.</p>
+    </div>
+    <div class="concept-grid">
+      {% for c in concepts %}
+      <a class="concept-card reveal" data-reveal href="/work/concepts/{{ c.slug }}/" data-hover>
+        <span class="shot-frame"><span class="laptop laptop--mini"><span class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><span class="laptop-screen"><picture><source type="image/webp" srcset="/assets/work/concepts/{{ c.slug }}-sm.webp 800w, /assets/work/concepts/{{ c.slug }}-lg.webp 1600w" sizes="(max-width: 760px) 80vw, 460px"><img src="/assets/work/concepts/{{ c.slug }}.jpg" alt="{{ c.alt }}" loading="lazy" decoding="async" width="1600" height="889"></picture></span></span><span class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></span></span></span>
+        <span class="concept-body">
+          <span class="concept-head"><b>{{ c.name }}</b><i>{{ c.trade }} · {{ c.area }}</i></span>
+          <span class="swatches">{% for p in c.palette %}<span class="swatch"><span class="chip" style="background:{{ p.hex }}"></span><span class="sw-name">{{ p.name }}</span><span class="sw-hex">{{ p.hex }}</span></span>{% endfor %}</span>
+          <span class="concept-intent">{{ c.intent }}</span>
+          <span class="card-more">Open the concept <span aria-hidden="true">&rarr;</span></span>
+        </span>
       </a>
       {% endfor %}
     </div>

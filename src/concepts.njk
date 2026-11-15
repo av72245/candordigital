@@ -1,0 +1,194 @@
+---
+pagination:
+  data: concepts
+  size: 1
+  alias: c
+permalink: "/work/concepts/{{ c.slug }}/"
+eleventyExcludeFromCollections: true
+layout: false
+---
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ c.name }} (concept) | Candor Digital</title>
+<meta name="description" content="A concept homepage for {{ c.name }}, a fictional {{ c.trade | lower }} in {{ c.area }}, designed by Candor Digital to show what a small business site can look like.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{{ site.url }}/work/concepts/{{ c.slug }}/">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{ c.fonts.href }}">
+<style>
+:root{
+  --bg:{{ c.colors.bg }}; --surface:{{ c.colors.surface }}; --text:{{ c.colors.text }}; --muted:{{ c.colors.muted }};
+  --accent:{{ c.colors.accent }}; --on-accent:{{ c.colors.onAccent }}; --soft:{{ c.colors.soft }};
+  --display:'{{ c.fonts.display }}', Georgia, serif; --body:'{{ c.fonts.body }}', system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg); color:var(--text); font-family:var(--body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1240px; margin:0 auto; padding:0 clamp(20px,4vw,48px)}
+/* nav */
+.nav{display:flex; align-items:center; justify-content:space-between; gap:20px; padding:22px 0}
+.logo{display:flex; align-items:center; gap:10px; font-family:var(--display); font-weight:{{ c.fonts.displayWeight }}; font-size:1.35rem; text-decoration:none; letter-spacing:-.01em}
+.logo i{width:30px; height:30px; border-radius:9px; background:var(--accent); display:inline-block; position:relative}
+.logo i::after{content:""; position:absolute; inset:8px; border-radius:50%; border:2.5px solid var(--on-accent)}
+.links{display:flex; gap:28px; font-size:.95rem; color:var(--muted)}
+.links a{text-decoration:none}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-weight:600; font-size:.95rem; text-decoration:none; border:1.5px solid transparent; white-space:nowrap}
+.btn-primary{background:var(--accent); color:var(--on-accent)}
+.btn-ghost{border-color:color-mix(in srgb,var(--text) 28%,transparent)}
+.btn-sm{padding:10px 18px; font-size:.88rem}
+/* hero */
+.hero{display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; padding:34px 0 70px; min-height:min(76vh,700px)}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:18px}
+.eyebrow::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
+h1{font-family:var(--display); font-weight:{{ c.fonts.displayWeight }}; font-size:clamp(2.6rem,5.6vw,4.7rem); line-height:1.02; letter-spacing:-.025em; margin:0 0 20px}
+h1 em{font-style:italic; color:var(--accent)}
+.sub{font-size:1.12rem; color:var(--muted); max-width:34em; margin:0 0 28px}
+.ctas{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:30px}
+.chips{display:flex; gap:10px; flex-wrap:wrap; list-style:none; margin:0; padding:0}
+.chips li{font-size:.85rem; padding:8px 14px; border-radius:999px; background:var(--surface); border:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
+.chips li::before{content:"✓"; color:var(--accent); font-weight:700; margin-right:7px}
+.scene{position:relative; aspect-ratio:1/1; width:100%; max-width:560px; justify-self:end}
+.scene svg{width:100%; height:100%; display:block; overflow:visible}
+/* features */
+.features{padding:70px 0 90px; border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
+h2{font-family:var(--display); font-weight:{{ c.fonts.displayWeight }}; font-size:clamp(1.8rem,3.2vw,2.6rem); letter-spacing:-.02em; margin:0 0 30px}
+.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+.card{background:var(--surface); border-radius:20px; padding:26px; border:1px solid color-mix(in srgb,var(--text) 8%,transparent)}
+.card b{display:block; font-family:var(--display); font-weight:{{ c.fonts.displayWeight }}; font-size:1.25rem; margin-bottom:8px}
+.card p{margin:0; color:var(--muted); font-size:.95rem}
+.card .n{display:inline-grid; place-items:center; width:34px; height:34px; border-radius:50%; background:color-mix(in srgb,var(--accent) 18%,transparent); color:var(--accent); font-weight:700; font-size:.85rem; margin-bottom:16px}
+footer{padding:28px 0 110px; color:var(--muted); font-size:.85rem; border-top:1px solid color-mix(in srgb,var(--text) 10%,transparent)}
+/* concept ribbon */
+.ribbon{position:fixed; left:50%; bottom:18px; transform:translateX(-50%); z-index:10; display:flex; align-items:center; gap:14px; padding:10px 12px 10px 18px; border-radius:999px; background:#111211; color:#F5F5F2; font:500 13px/1.3 system-ui,sans-serif; box-shadow:0 12px 30px -8px rgba(0,0,0,.5); max-width:calc(100% - 24px)}
+.ribbon b{color:#D9F24F; font-weight:700}
+.ribbon a{flex-shrink:0; background:#D9F24F; color:#111211; text-decoration:none; font-weight:700; padding:7px 13px; border-radius:999px}
+.is-shot .ribbon{display:none}
+.is-shot *{animation:none !important}
+.is-shot .draw{stroke-dashoffset:0}
+/* scene animation */
+@media (prefers-reduced-motion:no-preference){
+  .steam{animation:steam 4.5s ease-in-out infinite; transform-box:fill-box; transform-origin:bottom}
+  .steam.s2{animation-delay:1.5s} .steam.s3{animation-delay:3s}
+  .ring{animation:ring 4s ease-out infinite; transform-box:fill-box; transform-origin:center}
+  .ring.r2{animation-delay:1.33s} .ring.r3{animation-delay:2.66s}
+  .drop{animation:drop 4s ease-in infinite}
+  .leaf{animation:sway 7s ease-in-out infinite; transform-box:fill-box; transform-origin:bottom center}
+  .leaf.l2{animation-delay:-2s} .leaf.l3{animation-delay:-4s}
+  .draw{stroke-dasharray:1400; stroke-dashoffset:1400; animation:draw 3.2s ease-out .3s forwards}
+}
+@keyframes steam{0%{opacity:0; transform:translateY(20px) scaleY(.8)} 30%{opacity:.75} 100%{opacity:0; transform:translateY(-40px) scaleY(1.15)}}
+@keyframes ring{0%{opacity:.85; transform:scale(.25)} 100%{opacity:0; transform:scale(1.25)}}
+@keyframes drop{0%{transform:translateY(-120px); opacity:0} 15%{opacity:1} 30%{transform:translateY(0); opacity:1} 34%,100%{opacity:0; transform:translateY(0)}}
+@keyframes sway{0%,100%{transform:rotate(-3deg)} 50%{transform:rotate(3deg)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr; min-height:0; padding-top:10px}
+  .scene{justify-self:center; max-width:380px; order:-1}
+  .links{display:none}
+  .grid{grid-template-columns:1fr}
+}
+@media (max-width:480px){ .nav .btn{display:none} .ribbon span.long{display:none} .ribbon{white-space:nowrap; font-size:12px; gap:10px} }
+</style>
+<script>if(/[?&]shot\b/.test(location.search))document.documentElement.classList.add('is-shot');</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="nav">
+    <a class="logo" href="#"><i aria-hidden="true"></i>{{ c.name }}</a>
+    <nav class="links" aria-label="Main">{% for n in c.nav %}<a href="#">{{ n }}</a>{% endfor %}</nav>
+    <a class="btn btn-primary btn-sm" href="#">{{ c.navCta }}</a>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">{{ c.trade }} · {{ c.area }}</div>
+      <h1>{{ c.headline | safe }}</h1>
+      <p class="sub">{{ c.sub }}</p>
+      <div class="ctas"><a class="btn btn-primary" href="#">{{ c.ctaPrimary }} →</a><a class="btn btn-ghost" href="#">{{ c.ctaSecondary }}</a></div>
+      <ul class="chips">{% for ch in c.chips %}<li>{{ ch }}</li>{% endfor %}</ul>
+    </div>
+    <div class="scene" aria-hidden="true">
+      {% if c.scene == "cup" %}
+      <svg viewBox="0 0 400 400">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="60%" r="50%"><stop offset="0" stop-color="var(--accent)" stop-opacity=".55"/><stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></radialGradient>
+          <linearGradient id="cupg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="var(--soft)"/><stop offset="1" stop-color="#d9cbb6"/></linearGradient>
+          <linearGradient id="coffee" x1="0" x2="1"><stop offset="0" stop-color="#5a3826"/><stop offset="1" stop-color="#7a4a30"/></linearGradient>
+        </defs>
+        <circle cx="200" cy="240" r="190" fill="url(#glow)"/>
+        <ellipse cx="200" cy="330" rx="150" ry="26" fill="#000" opacity=".35"/>
+        <ellipse cx="200" cy="318" rx="140" ry="24" fill="var(--soft)" opacity=".9"/>
+        <path d="M110 205 h180 l-14 100 a28 28 0 0 1 -28 22 h-96 a28 28 0 0 1 -28 -22 z" fill="url(#cupg)"/>
+        <path d="M290 222 c40 0 46 56 6 62" fill="none" stroke="var(--soft)" stroke-width="14" stroke-linecap="round"/>
+        <ellipse cx="200" cy="205" rx="90" ry="16" fill="url(#coffee)"/>
+        <path d="M180 202 c10 -8 30 -8 40 0 c-8 6 -32 6 -40 0z" fill="#e9d6bd" opacity=".85"/>
+        <path class="steam" d="M170 175 c-18 -30 18 -45 0 -80" fill="none" stroke="var(--soft)" stroke-width="7" stroke-linecap="round" opacity=".6"/>
+        <path class="steam s2" d="M200 170 c-18 -32 18 -48 0 -92" fill="none" stroke="var(--soft)" stroke-width="7" stroke-linecap="round" opacity=".6"/>
+        <path class="steam s3" d="M230 175 c-18 -30 18 -45 0 -80" fill="none" stroke="var(--soft)" stroke-width="7" stroke-linecap="round" opacity=".6"/>
+      </svg>
+      {% elif c.scene == "ripple" %}
+      <svg viewBox="0 0 400 400">
+        <defs>
+          <radialGradient id="pool" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="#1f3a5e"/><stop offset="1" stop-color="var(--bg)" stop-opacity="0"/></radialGradient>
+          <linearGradient id="dropg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset=".55" stop-color="var(--soft)" stop-opacity=".55"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".9"/></linearGradient>
+        </defs>
+        <circle cx="200" cy="230" r="200" fill="url(#pool)"/>
+        <g transform="translate(200 270)">
+          <ellipse class="ring" rx="170" ry="52" fill="none" stroke="var(--accent)" stroke-width="3"/>
+          <ellipse class="ring r2" rx="170" ry="52" fill="none" stroke="var(--soft)" stroke-width="2" opacity=".7"/>
+          <ellipse class="ring r3" rx="170" ry="52" fill="none" stroke="var(--accent)" stroke-width="2"/>
+        </g>
+        <path d="M30 120 H140 a26 26 0 0 1 26 26 V176" fill="none" stroke="var(--soft)" stroke-opacity=".25" stroke-width="18" stroke-linecap="round"/>
+        <path d="M30 120 H140 a26 26 0 0 1 26 26 V176" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 14"/>
+        <g class="drop"><path d="M200 150 C200 150 168 196 168 220 a32 32 0 0 0 64 0 C232 196 200 150 200 150z" fill="url(#dropg)"/><ellipse cx="188" cy="214" rx="7" ry="12" fill="#fff" opacity=".7"/></g>
+      </svg>
+      {% elif c.scene == "arch" %}
+      <svg viewBox="0 0 400 400">
+        <defs><linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#f3dcc9"/><stop offset="1" stop-color="var(--accent)" stop-opacity=".55"/></linearGradient></defs>
+        <path d="M80 380 V180 a120 120 0 0 1 240 0 V380z" fill="url(#sky)"/>
+        <path d="M80 380 V180 a120 120 0 0 1 240 0 V380" fill="none" stroke="var(--soft)" stroke-width="6"/>
+        <line x1="200" y1="60" x2="200" y2="380" stroke="var(--soft)" stroke-width="4" opacity=".55"/>
+        <line x1="80" y1="250" x2="320" y2="250" stroke="var(--soft)" stroke-width="4" opacity=".55"/>
+        <circle cx="250" cy="150" r="34" fill="#fff4e8" opacity=".75"/>
+        <g fill="var(--soft)">
+          <path class="leaf" d="M70 380 C40 300 70 240 120 210 C120 270 105 330 70 380z"/>
+          <path class="leaf l2" d="M100 380 C110 300 150 260 190 250 C175 310 140 350 100 380z" opacity=".85"/>
+          <path class="leaf l3" d="M330 380 C360 310 340 250 290 220 C285 280 300 335 330 380z" opacity=".9"/>
+        </g>
+        <rect x="40" y="372" width="320" height="16" rx="8" fill="var(--accent)" opacity=".8"/>
+      </svg>
+      {% else %}
+      <svg viewBox="0 0 400 400">
+        <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="var(--soft)" stroke-opacity=".12" stroke-width="1"/></pattern></defs>
+        <rect x="10" y="20" width="380" height="360" rx="22" fill="url(#grid)"/>
+        <rect x="10" y="20" width="380" height="360" rx="22" fill="none" stroke="var(--soft)" stroke-opacity=".2"/>
+        <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <path class="draw" d="M70 300 V190 L170 110 L270 190 V300 Z M270 300 H340 V215 H270 M110 300 V230 H150 V300 M195 200 h45 v40 h-45 z M290 235 h30 v30 h-30z M225 150 V112 h22 V168" stroke="var(--accent)" stroke-width="4"/>
+          <path class="draw" d="M40 300 H360" stroke="var(--soft)" stroke-width="3"/>
+        </g>
+        <g fill="var(--soft)" font-family="system-ui" font-size="11" opacity=".7"><text x="74" y="322">12.4 m</text><text x="276" y="322">EXT 4.2 m</text></g>
+        <circle cx="330" cy="70" r="16" fill="var(--accent)"/>
+      </svg>
+      {% endif %}
+    </div>
+  </section>
+</div>
+
+<section class="features">
+  <div class="wrap">
+    <h2>{{ c.sectionTitle }}</h2>
+    <div class="grid">{% for f in c.features %}<article class="card"><span class="n">0{{ loop.index }}</span><b>{{ f.t }}</b><p>{{ f.d }}</p></article>{% endfor %}</div>
+  </div>
+</section>
+
+<footer><div class="wrap">{{ c.name }} · {{ c.area }} · A fictional business</div></footer>
+
+<div class="ribbon" role="note"><span><b>Concept site</b> by Candor Digital<span class="long"> · fictional business, not a client</span></span><a href="/work/#concepts">← Our work</a></div>
+</body>
+</html>
