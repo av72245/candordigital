@@ -1,6 +1,6 @@
 module.exports = function (eleventyConfig) {
   // Static assets live at the repo root and are copied as-is.
-  eleventyConfig.addPassthroughCopy({ css: 'css', js: 'js', assets: 'assets' });
+  eleventyConfig.addPassthroughCopy({ css: 'css', js: 'js', assets: 'assets', 'assets/favicon.ico': 'favicon.ico' });
   eleventyConfig.addWatchTarget('css/');
   eleventyConfig.addWatchTarget('js/');
   // Services in a fixed order (front matter `order`), not file date.
