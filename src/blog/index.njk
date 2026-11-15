@@ -1,0 +1,28 @@
+---
+layout: base.njk
+eleventyExcludeFromCollections: true
+tags: []
+post: false
+title: "Blog: Straight Answers on Marketing Costs | Candor Digital"
+description: "Plain-English answers to what small businesses actually ask: what marketing, ads and websites cost in Melbourne, and what's worth paying for."
+tag: "straight answers"
+heading: "Straight answers, <em>with the numbers in</em>."
+lede: "The questions small business owners ask us most, answered properly: real price ranges, what drives them, and when not to spend."
+secondaryCta: { label: "See our pricing", url: "/pricing/" }
+---
+{% include "page-hero.njk" %}
+<section>
+  <div class="wrap">
+    <div class="post-list post-list--hub">
+      {% for p in collections.post | reverse %}
+      <a class="post-item reveal" data-reveal href="{{ p.url }}" data-hover>
+        <i>{{ p.date | dateNice }} · {{ p.data.readMins }} min read</i>
+        <b>{{ p.data.heading | striptags }}</b>
+        <span>{{ p.data.description }}</span>
+        <span class="card-more">Read it <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% include "cta-band.njk" %}

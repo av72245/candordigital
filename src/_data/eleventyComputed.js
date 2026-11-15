@@ -24,6 +24,21 @@ module.exports = {
         areaServed: [{ '@type': 'City', name: 'Melbourne' }, { '@type': 'State', name: 'Victoria' }, { '@type': 'Country', name: 'Australia' }]
       });
     }
+    if (data.post) {
+      graph.push({
+        '@type': 'BlogPosting',
+        headline: data.heading ? data.heading.replace(/<[^>]+>/g, '') : data.title,
+        description: data.description,
+        url,
+        datePublished: data.date ? new Date(data.date).toISOString().slice(0, 10) : undefined,
+        dateModified: (data.updated ? new Date(data.updated) : data.date ? new Date(data.date) : new Date()).toISOString().slice(0, 10),
+        author: { '@type': 'Person', name: 'Akash Verma', url: data.site.url + '/about/' },
+        publisher: { '@id': data.site.url + '/#business' },
+        image: data.site.url + '/assets/og-candor.jpg',
+        mainEntityOfPage: url,
+        inLanguage: 'en-AU'
+      });
+    }
     if (data.faqs && data.faqs.length) {
       graph.push({
         '@type': 'FAQPage',

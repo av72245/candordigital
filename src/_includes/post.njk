@@ -1,0 +1,39 @@
+---
+layout: base.njk
+---
+<article class="post">
+  <header class="post-hero">
+    <div class="wrap post-wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog/">Blog</a><span aria-hidden="true">/</span><span aria-current="page">{{ crumb or heading | striptags }}</span></nav>
+      <div class="section-tag is-visible"><span class="tag-spark" aria-hidden="true"></span><span class="tag-text">{{ tag or "straight answer" }}</span></div>
+      <h1>{{ heading | safe }}</h1>
+      <p class="post-lede">{{ lede | safe }}</p>
+      <p class="post-meta">By <a href="/about/">Akash Verma</a> · <time datetime="{{ page.date | dateIso }}">{{ page.date | dateNice }}</time> · {{ readMins }} min read</p>
+    </div>
+  </header>
+  <div class="wrap post-wrap">
+    {% if answer %}<aside class="post-answer"><b>Short answer</b><p>{{ answer | safe }}</p></aside>{% endif %}
+    <div class="post-body">
+      {{ content | safe }}
+    </div>
+    {% if sources %}
+    <section class="post-sources">
+      <h2>Sources</h2>
+      <p class="muted small">Figures are what these providers and surveys publish, checked {{ checked }}. Prices move, so treat them as a guide, not a quote.</p>
+      <ol>{% for s in sources %}<li><a href="{{ s.url }}" rel="nofollow noopener" target="_blank">{{ s.name }}</a></li>{% endfor %}</ol>
+    </section>
+    {% endif %}
+    <aside class="post-cta">
+      <div>
+        <b>Want the number for your business?</b>
+        <p>Book a free 30-minute audit. We'll look at what you have and tell you honestly whether it's worth spending more, and where.</p>
+      </div>
+      <a class="btn btn-primary magnetic" href="/contact/" data-hover data-track="post_cta"><span>Book a free audit</span></a>
+    </aside>
+    {% set others = collections.post | reverse %}
+    <nav class="post-more" aria-label="More posts">
+      <h2>More straight answers</h2>
+      <div class="post-list">{% for p in others %}{% if p.url != page.url %}<a class="post-item" href="{{ p.url }}" data-hover><b>{{ p.data.heading | striptags }}</b><span>{{ p.data.description }}</span></a>{% endif %}{% endfor %}</div>
+    </nav>
+  </div>
+</article>

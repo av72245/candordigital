@@ -911,3 +911,52 @@ html{font-size:clamp(16px, calc(0.4vw + 10.24px), 19px);}
 .concept-card:hover .card-more span{transform:translateX(4px) rotate(-6deg);}
 .concept-teaser{margin-left:18px;}
 @media (max-width:640px){ .concept-teaser{display:inline-block; margin:10px 0 0;} }
+
+/* ---------- Blog ---------- */
+.post-wrap{max-width:46rem;}
+.post-hero{padding:2.2rem 0 1.4rem; position:relative;}
+.post-hero h1{font-size:clamp(2rem,4.4vw,3rem); line-height:1.08; letter-spacing:-.025em; margin:.5rem 0 .9rem;}
+.post-lede{font-size:1.12rem; color:var(--text-muted); margin:0 0 .9rem;}
+.post-meta{font-size:.85rem; color:var(--text-muted); margin:0;}
+.post-meta a{color:var(--text); font-weight:600; text-decoration:none;}
+.post-answer{margin:1.2rem 0 2rem; padding:1.1rem 1.25rem; border-radius:16px; background:color-mix(in srgb,var(--lime) 14%,var(--surface)); border:1px solid color-mix(in srgb,var(--lime) 45%,var(--border));}
+.post-answer b{display:block; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.35rem;}
+.post-answer p{margin:0; font-size:1.02rem; line-height:1.6;}
+.post-body{font-size:1.04rem; line-height:1.72;}
+.post-body h2{font-size:clamp(1.35rem,2.4vw,1.7rem); margin:2.2rem 0 .7rem; letter-spacing:-.015em;}
+.post-body p{margin:0 0 1.05rem;}
+.post-body ul,.post-body ol{margin:0 0 1.2rem; padding-left:1.3rem;}
+.post-body li{margin:.35rem 0;}
+.post-body a{color:var(--text); font-weight:600; text-decoration-color:var(--lime); text-decoration-thickness:2px; text-underline-offset:3px;}
+.post-body strong{font-weight:700;}
+.post-body table{width:100%; border-collapse:collapse; margin:.4rem 0 1.6rem; font-size:.92rem; display:block; overflow-x:auto;}
+.post-body th,.post-body td{text-align:left; padding:.65rem .75rem; border-bottom:1px solid var(--border); vertical-align:top;}
+.post-body th{font-size:.78rem; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); white-space:nowrap;}
+.post-body td:nth-child(2){white-space:nowrap; font-weight:600;}
+.post-sources{margin:2.4rem 0 0; padding-top:1.4rem; border-top:1px solid var(--border);}
+.post-sources h2{font-size:1.1rem; margin:0 0 .4rem;}
+.post-sources ol{margin:.6rem 0 0; padding-left:1.2rem; font-size:.88rem;}
+.post-sources li{margin:.3rem 0;}
+.post-sources a{color:var(--text-muted);}
+.post-cta{display:flex; align-items:center; justify-content:space-between; gap:1.2rem; margin:2.4rem 0; padding:1.4rem 1.5rem; border-radius:20px; background:var(--surface); border:1px solid var(--border);}
+.post-cta b{font-family:var(--font-display); font-size:1.2rem;}
+.post-cta p{margin:.3rem 0 0; color:var(--text-muted); font-size:.95rem;}
+@media (max-width:640px){ .post-cta{flex-direction:column; align-items:flex-start;} }
+.post-more{margin:0 0 3.5rem;}
+.post-more h2{font-size:1.25rem; margin:0 0 .9rem;}
+.post-list{display:grid; gap:12px;}
+.post-list--hub{grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px;}
+@media (max-width:960px){ .post-list--hub{grid-template-columns:1fr;} }
+.post-item{display:flex; flex-direction:column; gap:6px; padding:1.1rem 1.2rem; border-radius:16px; border:1px solid var(--border); background:var(--surface); color:var(--text); text-decoration:none; transition:transform .35s cubic-bezier(.22,1,.36,1), border-color .3s ease;}
+.post-item:hover{transform:translateY(-3px); border-color:color-mix(in srgb,var(--lime) 60%,var(--border));}
+.post-item i{font-style:normal; font-size:.78rem; color:var(--text-muted); font-weight:600;}
+.post-item b{font-family:var(--font-display); font-size:1.15rem; line-height:1.25;}
+.post-item span{font-size:.9rem; color:var(--text-muted);}
+.post-item .card-more{color:var(--text); font-size:.86rem; font-weight:700; margin-top:auto;}
+.post-item:hover .card-more{background-size:100% 100%; color:#111;}
+@media (max-width:640px){
+  .post-body table{display:table; table-layout:fixed; font-size:.8rem;}
+  .post-body th,.post-body td{padding:.55rem .4rem;}
+  .post-body th{white-space:normal; font-size:.68rem;}
+  .post-body td:nth-child(2){white-space:normal;}
+}
