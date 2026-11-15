@@ -902,10 +902,9 @@ html{font-size:clamp(16px, calc(0.4vw + 10.24px), 19px);}
 .concept-head b{font-family:var(--font-display); font-size:1.25rem;}
 .concept-head i{font-style:normal; font-size:.82rem; font-weight:600; color:var(--text-muted);}
 .swatches{display:grid; grid-template-columns:repeat(3,1fr); gap:8px;}
-.swatch{display:grid; grid-template-columns:22px 1fr; grid-template-rows:auto auto; column-gap:8px; align-items:center; padding:8px; border-radius:12px; background:var(--surface-alt); border:1px solid var(--border);}
-.swatch .chip{grid-row:1 / span 2; width:22px; height:22px; border-radius:7px; box-shadow:inset 0 0 0 1px rgba(127,127,127,.35);}
+.swatch{display:grid; grid-template-columns:22px 1fr; column-gap:8px; align-items:center; padding:8px; border-radius:12px; background:var(--surface-alt); border:1px solid var(--border);}
+.swatch .chip{width:22px; height:22px; border-radius:7px; box-shadow:inset 0 0 0 1px rgba(127,127,127,.35);}
 .sw-name{font-size:.78rem; font-weight:700; line-height:1.2;}
-.sw-hex{font-size:.7rem; color:var(--text-muted); font-variant-numeric:tabular-nums; letter-spacing:.02em;}
 .concept-intent{font-size:.9rem; color:var(--text-muted);}
 .concept-card .card-more{margin-top:2px;}
 .concept-card:hover .card-more{background-size:100% 100%; color:#111;}

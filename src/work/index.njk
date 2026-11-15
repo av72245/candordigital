@@ -40,7 +40,7 @@ breadcrumbs: [{ name: "Work", url: "/work/" }]
         <span class="shot-frame"><span class="laptop laptop--mini"><span class="laptop-lid"><span class="laptop-cam" aria-hidden="true"></span><span class="laptop-screen"><picture><source type="image/webp" srcset="/assets/work/concepts/{{ c.slug }}-sm.webp 800w, /assets/work/concepts/{{ c.slug }}-lg.webp 1600w" sizes="(max-width: 760px) 80vw, 460px"><img src="/assets/work/concepts/{{ c.slug }}.jpg" alt="{{ c.alt }}" loading="lazy" decoding="async" width="1600" height="889"></picture></span></span><span class="laptop-deck" aria-hidden="true"><span class="laptop-keys"></span><span class="laptop-pad"></span></span></span></span>
         <span class="concept-body">
           <span class="concept-head"><b>{{ c.name }}</b><i>{{ c.trade }} · {{ c.area }}</i></span>
-          <span class="swatches">{% for p in c.palette %}<span class="swatch"><span class="chip" style="background:{{ p.hex }}"></span><span class="sw-name">{{ p.name }}</span><span class="sw-hex">{{ p.hex }}</span></span>{% endfor %}</span>
+          <span class="swatches">{% for p in c.palette %}<span class="swatch"><span class="chip" style="background:{{ p.hex }}"></span><span class="sw-name">{{ p.name }}</span></span>{% endfor %}</span>
           <span class="concept-intent">{{ c.intent }}</span>
           <span class="card-more">Open the concept <span aria-hidden="true">&rarr;</span></span>
         </span>
